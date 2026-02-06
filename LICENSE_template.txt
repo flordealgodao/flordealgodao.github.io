@@ -1,0 +1,4 @@
+This project uses a template from HTML5 UP, licensed under CC-BY 3.0.
+You can view the license here: https://html5up.net/license
+
+The original template is Copyright (c) HTML5 UP.   
