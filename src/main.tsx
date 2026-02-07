@@ -1,1 +1,1 @@
-// minimal entry — site is pure HTML/CSS/JS in index.html
+// Entry point stub — the actual site is fully in index.html (pure HTML/CSS/JS)

@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Flor de Algodão | Moda Infantil Feminina</title>
-  <meta name="description" content="Flor de Algodão — Roupas infantis femininas encantadoras. Vestidos, vestido com bolsinha, macacão e conjuntos com estampas exclusivas." />
+  <title>Flor de Algodão | Moda Infantil Feminina — Rio Verde, GO</title>
+  <meta name="description" content="Flor de Algodão — Roupas infantis femininas encantadoras em Rio Verde, Goiás. Vestidos, conjuntos, saias e macacões com estampas exclusivas." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -27,17 +27,13 @@
     .serif { font-family: 'Playfair Display', Georgia, serif; }
     .text-center { text-align: center; }
     .gradient-text {
-      background: linear-gradient(135deg, #f472b6, #fb7185, #a78bfa);
+      background: linear-gradient(135deg, #f9a8d4, #f472b6, #ec4899);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
 
     /* ===== KEYFRAMES ===== */
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-12px); }
-    }
     @keyframes modalIn {
       from { opacity: 0; transform: scale(0.9) translateY(20px); }
       to { opacity: 1; transform: scale(1) translateY(0); }
@@ -51,8 +47,8 @@
     .hero {
       position: relative;
       overflow: hidden;
-      background: linear-gradient(135deg, #fdf2f8, #fff1f2, #f5f3ff);
-      padding: 80px 0 90px;
+      background: linear-gradient(135deg, #fdf2f8, #fff1f2, #fce7f3);
+      padding: 60px 0 70px;
     }
     .hero-blob {
       position: absolute;
@@ -61,66 +57,75 @@
       pointer-events: none;
     }
     .hero-blob-1 { width: 260px; height: 260px; background: rgba(251,191,210,0.3); top: -40px; left: -40px; }
-    .hero-blob-2 { width: 200px; height: 200px; background: rgba(196,181,253,0.3); top: 60px; right: 20px; }
+    .hero-blob-2 { width: 200px; height: 200px; background: rgba(249,168,212,0.25); top: 60px; right: 20px; }
     .hero-blob-3 { width: 230px; height: 230px; background: rgba(253,164,175,0.2); bottom: 20px; left: 30%; }
 
-    .hero-float {
-      position: absolute;
-      opacity: 0.35;
-      pointer-events: none;
-      animation: float 3.5s ease-in-out infinite;
-    }
-
     .hero-content { position: relative; max-width: 700px; margin: 0 auto; text-align: center; }
-    .hero-badge {
-      display: inline-flex;
+
+    /* ===== LOGO ===== */
+    .hero-logo {
+      display: flex;
       align-items: center;
-      gap: 8px;
-      background: rgba(255,255,255,0.75);
-      backdrop-filter: blur(8px);
-      padding: 8px 20px;
-      border-radius: 50px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+      justify-content: center;
       margin-bottom: 24px;
     }
-    .hero-badge span:last-child {
-      font-weight: 600;
-      letter-spacing: 0.5px;
-      color: #fb7185;
-      font-size: 1.05rem;
+    .hero-logo img {
+      max-height: 90px;
+      width: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 2px 8px rgba(0,0,0,0.06));
     }
+    /* Fallback text logo if image doesn't load */
+    .hero-logo-fallback {
+      display: none;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255,255,255,0.75);
+      backdrop-filter: blur(8px);
+      padding: 10px 24px;
+      border-radius: 50px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+    }
+    .hero-logo-fallback .icon { font-size: 1.5rem; }
+    .hero-logo-fallback .name {
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      color: #ec4899;
+      font-size: 1.15rem;
+    }
+
     .hero h1 {
-      font-size: clamp(2rem, 5vw, 3.4rem);
+      font-size: clamp(2rem, 5vw, 3.2rem);
       font-weight: 700;
       line-height: 1.15;
       margin-bottom: 20px;
       color: #1f2937;
     }
-    .hero p {
-      font-size: clamp(1rem, 2.2vw, 1.15rem);
+    .hero p.hero-subtitle {
+      font-size: clamp(1rem, 2.2vw, 1.12rem);
       color: #9ca3af;
-      max-width: 560px;
+      max-width: 540px;
       margin: 0 auto 32px;
     }
-    .hero p strong.pink { color: #fb7185; }
-    .hero p strong.purple { color: #a78bfa; }
+    .hero p.hero-subtitle strong.pink { color: #ec4899; }
+    .hero p.hero-subtitle strong.purple { color: #a78bfa; }
 
     .btn-primary {
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      background: linear-gradient(135deg, #f472b6, #fb7185);
+      background: linear-gradient(135deg, #f9a8d4, #ec4899);
       color: #fff;
       font-weight: 600;
       font-size: 1.05rem;
       padding: 16px 36px;
       border-radius: 50px;
-      box-shadow: 0 8px 24px rgba(244,114,182,0.35);
+      box-shadow: 0 8px 24px rgba(236,72,153,0.3);
       transition: transform 0.3s, box-shadow 0.3s;
     }
     .btn-primary:hover {
       transform: scale(1.05);
-      box-shadow: 0 12px 32px rgba(244,114,182,0.45);
+      box-shadow: 0 12px 32px rgba(236,72,153,0.4);
     }
     .btn-primary svg { transition: transform 0.3s; }
     .btn-primary:hover svg { transform: translateY(3px); }
@@ -130,7 +135,7 @@
       flex-wrap: wrap;
       justify-content: center;
       gap: 24px;
-      margin-top: 48px;
+      margin-top: 40px;
       font-size: 0.88rem;
       color: #9ca3af;
     }
@@ -182,8 +187,8 @@
       font-weight: 700;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
-    .step-number.pink { background: linear-gradient(135deg, #f472b6, #fb7185); }
-    .step-number.purple { background: linear-gradient(135deg, #a78bfa, #8b5cf6); }
+    .step-number.pink { background: linear-gradient(135deg, #f9a8d4, #ec4899); }
+    .step-number.purple { background: linear-gradient(135deg, #f9a8d4, #db2777); }
     .step-header h3 { font-size: 1.1rem; font-weight: 600; color: #374151; }
     .step-header h3 span { font-weight: 400; color: #9ca3af; font-size: 0.9rem; margin-left: 6px; }
 
@@ -211,16 +216,16 @@
     .product-card:hover {
       transform: translateY(-4px);
       border-color: #f9a8d4;
-      box-shadow: 0 12px 32px rgba(244,114,182,0.12);
+      box-shadow: 0 12px 32px rgba(236,72,153,0.12);
     }
     .product-card.selected {
-      border-color: #f472b6;
+      border-color: #ec4899;
       background: #fff;
-      box-shadow: 0 12px 36px rgba(244,114,182,0.18);
+      box-shadow: 0 12px 36px rgba(236,72,153,0.18);
       transform: scale(1.03);
     }
     .product-card:focus-visible {
-      outline: 2px solid #f472b6;
+      outline: 2px solid #ec4899;
       outline-offset: 2px;
     }
 
@@ -231,11 +236,11 @@
       width: 26px;
       height: 26px;
       border-radius: 50%;
-      background: linear-gradient(135deg, #f472b6, #fb7185);
+      background: linear-gradient(135deg, #f9a8d4, #ec4899);
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 4px 10px rgba(244,114,182,0.3);
+      box-shadow: 0 4px 10px rgba(236,72,153,0.3);
       opacity: 0;
       transform: scale(0.6);
       transition: all 0.3s;
@@ -281,12 +286,12 @@
       overflow: hidden;
     }
     .product-price {
-      background: linear-gradient(135deg, #fdf2f8, #fff1f2);
+      background: linear-gradient(135deg, #fdf2f8, #fce7f3);
       padding: 5px 16px;
       border-radius: 50px;
       font-size: 0.88rem;
       font-weight: 700;
-      color: #f43f5e;
+      color: #db2777;
     }
     .product-prints-count {
       margin-top: 10px;
@@ -302,7 +307,7 @@
       display: flex;
       align-items: center;
       gap: 12px;
-      background: linear-gradient(135deg, #fdf2f8, #f5f3ff);
+      background: linear-gradient(135deg, #fdf2f8, #fce7f3);
       border-radius: 18px;
       padding: 16px 20px;
       margin-bottom: 20px;
@@ -340,10 +345,10 @@
     .print-card:hover {
       transform: translateY(-5px);
       border-color: #f9a8d4;
-      box-shadow: 0 12px 32px rgba(244,114,182,0.15);
+      box-shadow: 0 12px 32px rgba(236,72,153,0.15);
     }
     .print-card:focus-visible {
-      outline: 2px solid #f472b6;
+      outline: 2px solid #ec4899;
       outline-offset: 2px;
     }
 
@@ -400,7 +405,7 @@
       border-radius: 50px;
       font-size: 0.85rem;
       font-weight: 600;
-      color: #f43f5e;
+      color: #db2777;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
       opacity: 0;
       transform: translateY(12px);
@@ -439,36 +444,35 @@
       background: linear-gradient(180deg, #fff, #fdf2f8);
       padding: 60px 0 40px;
     }
-    .footer-features {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 20px;
-      margin-bottom: 40px;
-    }
-    @media (min-width: 640px) { .footer-features { grid-template-columns: repeat(3, 1fr); } }
-    .footer-feature {
+    .footer-feature-single {
+      max-width: 420px;
+      margin: 0 auto 40px;
       background: #fff;
       border-radius: 20px;
       padding: 28px 24px;
       box-shadow: 0 2px 10px rgba(0,0,0,0.04);
       text-align: center;
     }
-    .footer-feature .icon { font-size: 1.8rem; margin-bottom: 12px; display: block; }
-    .footer-feature h4 { font-weight: 600; color: #374151; margin-bottom: 6px; }
-    .footer-feature p { font-size: 0.85rem; color: #9ca3af; }
+    .footer-feature-single .icon { font-size: 1.8rem; margin-bottom: 12px; display: block; }
+    .footer-feature-single h4 { font-weight: 600; color: #374151; margin-bottom: 6px; }
+    .footer-feature-single p { font-size: 0.85rem; color: #9ca3af; }
 
     .footer-brand {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
+      gap: 10px;
       margin-bottom: 8px;
     }
+    .footer-brand img {
+      max-height: 40px;
+      width: auto;
+      object-fit: contain;
+    }
     .footer-brand .icon { font-size: 1.4rem; }
-    .footer-brand .name { font-weight: 600; letter-spacing: 0.5px; color: #fb7185; font-size: 1.15rem; }
-    .footer-tagline { font-size: 0.88rem; color: #9ca3af; margin-bottom: 24px; }
-    .footer-stars { display: flex; align-items: center; justify-content: center; gap: 4px; margin-bottom: 32px; }
-    .footer-stars .label { font-size: 0.82rem; color: #9ca3af; margin-left: 8px; }
+    .footer-brand .name { font-weight: 700; letter-spacing: 0.5px; color: #ec4899; font-size: 1.15rem; }
+    .footer-tagline { font-size: 0.88rem; color: #9ca3af; margin-bottom: 6px; }
+    .footer-location { font-size: 0.82rem; color: #d1d5db; margin-bottom: 28px; }
     .footer-bottom {
       border-top: 1px solid #fce7f3;
       padding-top: 20px;
@@ -568,7 +572,7 @@
     }
 
     .modal-summary {
-      background: linear-gradient(135deg, #fdf2f8, #f5f3ff);
+      background: linear-gradient(135deg, #fdf2f8, #fce7f3);
       border-radius: 18px;
       padding: 18px 20px;
       margin-bottom: 24px;
@@ -584,10 +588,10 @@
     .modal-summary .row .value { font-weight: 600; color: #374151; }
     .modal-summary .divider {
       border: none;
-      border-top: 1px solid rgba(244,114,182,0.2);
+      border-top: 1px solid rgba(236,72,153,0.2);
       margin: 10px 0;
     }
-    .modal-summary .row.price .value { font-size: 1.1rem; font-weight: 700; color: #f43f5e; }
+    .modal-summary .row.price .value { font-size: 1.1rem; font-weight: 700; color: #db2777; }
 
     .btn-whatsapp {
       display: flex;
@@ -631,20 +635,24 @@
     <div class="hero-blob hero-blob-2"></div>
     <div class="hero-blob hero-blob-3"></div>
 
-    <span class="hero-float" style="top:14%;left:10%;font-size:1.8rem;animation-duration:3s;">🌸</span>
-    <span class="hero-float" style="top:28%;right:13%;font-size:1.5rem;animation-duration:3.5s;animation-delay:0.5s;">🦋</span>
-    <span class="hero-float" style="bottom:18%;left:18%;font-size:1.5rem;animation-duration:4s;animation-delay:1s;">⭐</span>
-    <span class="hero-float" style="bottom:25%;right:22%;font-size:1.8rem;animation-duration:3.2s;animation-delay:1.5s;">🌈</span>
-    <span class="hero-float" style="top:22%;left:45%;font-size:1.2rem;animation-duration:4.5s;animation-delay:2s;">💕</span>
-
     <div class="hero-content">
-      <div class="hero-badge">
-        <span style="font-size:1.4rem;">🌼</span>
-        <span class="serif">Flor de Algodão</span>
+
+      <!-- ===== LOGO: troque "logo.png" pelo nome real do arquivo de logo ===== -->
+      <div class="hero-logo">
+        <img
+          src="logo.png"
+          alt="Flor de Algodão — Logo"
+          id="heroLogoImg"
+          onerror="this.style.display='none'; document.getElementById('heroLogoFallback').style.display='flex';"
+        />
+        <div class="hero-logo-fallback" id="heroLogoFallback">
+          <span class="icon">🌸</span>
+          <span class="name serif">Flor de Algodão</span>
+        </div>
       </div>
 
       <h1 class="serif">Moda Infantil <span class="gradient-text">com Amor</span></h1>
-      <p>Peças encantadoras para as pequenas princesas. Cada detalhe pensado com carinho para trazer <strong class="pink">conforto</strong> e <strong class="purple">estilo</strong> ao dia a dia das meninas.</p>
+      <p class="hero-subtitle">Peças encantadoras para as pequenas princesas de <strong class="pink">Rio Verde</strong>. Cada detalhe pensado com carinho para trazer <strong class="pink">conforto</strong> e <strong class="purple">estilo</strong> ao dia a dia das meninas.</p>
 
       <a href="#catalogo" class="btn-primary">
         Ver Coleção
@@ -654,6 +662,8 @@
       </a>
 
       <div class="trust-badges">
+        <div><span style="font-size:1.1rem;">📍</span><span>Rio Verde — GO</span></div>
+        <div><span style="font-size:1.1rem;">💬</span><span>Vendas pelo WhatsApp</span></div>
         <div><span style="font-size:1.1rem;">💝</span><span>Feito com Amor</span></div>
       </div>
     </div>
@@ -693,20 +703,26 @@
   <!-- ==================== FOOTER ==================== -->
   <footer class="site-footer">
     <div class="container">
-      <div class="footer-features">
-        <div class="footer-feature">
-          <span class="icon">💬</span>
-          <h4>Atendimento Pessoal</h4>
-          <p>Tire suas dúvidas e faça seu pedido diretamente pelo WhatsApp.</p>
-        </div>
+
+      <div class="footer-feature-single">
+        <span class="icon">💬</span>
+        <h4>Atendimento Pessoal</h4>
+        <p>Tire suas dúvidas e faça seu pedido diretamente pelo WhatsApp. Atendemos com carinho em Rio Verde e região!</p>
       </div>
 
       <div class="text-center">
         <div class="footer-brand">
-          <span class="icon">🌼</span>
+          <img
+            src="logo.png"
+            alt="Flor de Algodão"
+            style="max-height:36px;"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='inline'; this.nextElementSibling.nextElementSibling.style.display='inline';"
+          />
+          <span class="icon" style="display:none;">🌸</span>
           <span class="name serif">Flor de Algodão</span>
         </div>
         <p class="footer-tagline">Vestindo sonhos, encantando sorrisos ✨</p>
+        <p class="footer-location">📍 Rio Verde — Goiás</p>
         <div class="footer-bottom">
           © <span id="footerYear"></span> Flor de Algodão — Moda Infantil Feminina. Todos os direitos reservados.
         </div>
@@ -750,15 +766,18 @@
 
   <!-- ==================== JAVASCRIPT ==================== -->
   <script>
-    // ===== PRODUCT DATA =====
-    // Image references point to files in the same folder.
-    // For each product: "thumb" is the product thumbnail.
-    // For each print: "image" is the print image file name.
-    // Replace WHATSAPP_NUMBER with your real number (with country code, no + or spaces).
+    /* ===== CONFIGURAÇÃO =====
+       Substitua pelo seu número de WhatsApp real.
+       Formato: código do país + DDD + número, sem espaços nem símbolos.
+       Exemplo para (64) 99999-9999: "5564999999999"
+    */
+    var WHATSAPP_NUMBER = "5500000000000";
 
-    const WHATSAPP_NUMBER = "55064992508144";
-
-    const products = [
+    /* ===== DADOS DOS PRODUTOS =====
+       As imagens devem estar na MESMA PASTA do index.html.
+       Se o arquivo não existir, um fallback com gradient + emoji será exibido automaticamente.
+    */
+    var products = [
       {
         id: "vestido",
         name: "Vestido Encantado",
@@ -890,60 +909,45 @@
     ];
 
     // ===== STATE =====
-    let selectedProductIndex = 0;
+    var selectedProductIndex = 0;
 
     // ===== DOM REFS =====
-    const productsGrid = document.getElementById("productsGrid");
-    const printsGrid = document.getElementById("printsGrid");
-    const selectedInfo = document.getElementById("selectedInfo");
-    const step2Title = document.getElementById("step2Title");
-    const modal = document.getElementById("modal");
-    const modalBackdrop = document.getElementById("modalBackdrop");
-    const modalClose = document.getElementById("modalClose");
-    const modalBack = document.getElementById("modalBack");
-    const modalHeader = document.getElementById("modalHeader");
-    const modalSummary = document.getElementById("modalSummary");
-    const whatsappLink = document.getElementById("whatsappLink");
-
-    // ===== HELPER: Try to load image, fallback to gradient + emoji =====
-    function buildImageOrFallback(src, alt, colors, emoji, className) {
-      // Returns an HTML string. We use onerror to swap to a gradient fallback.
-      const gradient = `linear-gradient(135deg, ${colors[0]}, ${colors[1]}, ${colors[2] || colors[1]})`;
-      return `<img src="${src}" alt="${alt}" class="${className}" 
-        onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
-        <div class="${className}" style="display:none;background:${gradient};align-items:center;justify-content:center;font-size:2.2rem;">${emoji}</div>`;
-    }
+    var productsGrid = document.getElementById("productsGrid");
+    var printsGrid = document.getElementById("printsGrid");
+    var selectedInfo = document.getElementById("selectedInfo");
+    var step2Title = document.getElementById("step2Title");
+    var modal = document.getElementById("modal");
+    var modalBackdrop = document.getElementById("modalBackdrop");
+    var modalClose = document.getElementById("modalClose");
+    var modalBack = document.getElementById("modalBack");
+    var modalHeader = document.getElementById("modalHeader");
+    var modalSummary = document.getElementById("modalSummary");
+    var whatsappLink = document.getElementById("whatsappLink");
 
     // ===== RENDER PRODUCTS =====
     function renderProducts() {
-      productsGrid.innerHTML = products.map((product, i) => {
-        const isSelected = i === selectedProductIndex;
-        const gradient = `linear-gradient(135deg, ${product.colors[0]}, ${product.colors[1]})`;
-        return `
-          <button class="product-card${isSelected ? " selected" : ""}" data-index="${i}" aria-label="Selecionar ${product.name}">
-            <div class="product-check">
-              <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="#fff" stroke-width="3">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
-              </svg>
-            </div>
-            <div class="product-icon" style="background:${gradient};">
-              <img src="${product.thumb}" alt="${product.name}"
-                onerror="this.style.display='none';this.parentElement.innerHTML='<span style=font-size:2.2rem>${product.emoji}</span>';" />
-            </div>
-            <h4>${product.name}</h4>
-            <p class="desc">${product.description}</p>
-            <span class="product-price">${product.price}</span>
-            <div class="product-prints-count">
-              <span>🎨</span>
-              <span>${product.prints.length} ${product.prints.length === 1 ? "estampa" : "estampas"}</span>
-            </div>
-          </button>
-        `;
+      productsGrid.innerHTML = products.map(function(product, i) {
+        var isSelected = i === selectedProductIndex;
+        var gradient = "linear-gradient(135deg, " + product.colors[0] + ", " + product.colors[1] + ")";
+        return '<button class="product-card' + (isSelected ? " selected" : "") + '" data-index="' + i + '" aria-label="Selecionar ' + product.name + '">' +
+          '<div class="product-check">' +
+            '<svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="#fff" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>' +
+          '</div>' +
+          '<div class="product-icon" style="background:' + gradient + ';">' +
+            '<img src="' + product.thumb + '" alt="' + product.name + '" onerror="this.style.display=\'none\';this.parentElement.innerHTML=\'<span style=font-size:2.2rem>' + product.emoji + '</span>\';" />' +
+          '</div>' +
+          '<h4>' + product.name + '</h4>' +
+          '<p class="desc">' + product.description + '</p>' +
+          '<span class="product-price">' + product.price + '</span>' +
+          '<div class="product-prints-count">' +
+            '<span>🎨</span>' +
+            '<span>' + product.prints.length + (product.prints.length === 1 ? " estampa" : " estampas") + '</span>' +
+          '</div>' +
+        '</button>';
       }).join("");
 
-      // Add click listeners
-      productsGrid.querySelectorAll(".product-card").forEach(card => {
-        card.addEventListener("click", () => {
+      productsGrid.querySelectorAll(".product-card").forEach(function(card) {
+        card.addEventListener("click", function() {
           selectedProductIndex = parseInt(card.dataset.index);
           renderProducts();
           renderPrints();
@@ -953,58 +957,44 @@
 
     // ===== RENDER PRINTS =====
     function renderPrints() {
-      const product = products[selectedProductIndex];
+      var product = products[selectedProductIndex];
+      step2Title.innerHTML = 'Escolha a estampa <span>— ' + product.name + '</span>';
 
-      // Update step 2 title
-      step2Title.innerHTML = `Escolha a estampa <span>— ${product.name}</span>`;
+      var gradient = "linear-gradient(135deg, " + product.colors[0] + ", " + product.colors[1] + ")";
+      selectedInfo.innerHTML =
+        '<div class="selected-info-icon" style="background:' + gradient + ';width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;">' +
+          '<img src="' + product.thumb + '" alt="' + product.name + '" style="width:40px;height:40px;border-radius:10px;object-fit:cover;" onerror="this.style.display=\'none\';this.parentElement.innerHTML=\'<span style=font-size:1.4rem>' + product.emoji + '</span>\';" />' +
+        '</div>' +
+        '<div>' +
+          '<strong>' + product.name + '</strong>' +
+          '<small>' + (product.prints.length === 1 ? "1 estampa disponível" : product.prints.length + " estampas disponíveis") + ' • Tamanhos: ' + product.sizes + '</small>' +
+        '</div>';
 
-      // Update selected info
-      const gradient = `linear-gradient(135deg, ${product.colors[0]}, ${product.colors[1]})`;
-      selectedInfo.innerHTML = `
-        <div class="selected-info-icon" style="background:${gradient};width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;">
-          <img src="${product.thumb}" alt="${product.name}" style="width:40px;height:40px;border-radius:10px;object-fit:cover;"
-            onerror="this.style.display='none';this.parentElement.innerHTML='<span style=font-size:1.4rem>${product.emoji}</span>';" />
-        </div>
-        <div>
-          <strong>${product.name}</strong>
-          <small>${product.prints.length === 1 ? "1 estampa disponível" : product.prints.length + " estampas disponíveis"} • Tamanhos: ${product.sizes}</small>
-        </div>
-      `;
+      var isSingle = product.prints.length === 1;
+      printsGrid.innerHTML = '<div class="prints-grid' + (isSingle ? " single" : "") + '">' +
+        product.prints.map(function(print) {
+          var printGradient = "linear-gradient(135deg, " + print.colors[0] + ", " + print.colors[1] + ", " + (print.colors[2] || print.colors[1]) + ")";
+          var patternEmojis = "";
+          for (var j = 0; j < 20; j++) patternEmojis += "<span>" + print.emoji + "</span>";
 
-      // Render print cards
-      const isSingle = product.prints.length === 1;
-      let patternCells = "";
-      for (let j = 0; j < 20; j++) patternCells += "<span></span>";
+          return '<button class="print-card" data-print-id="' + print.id + '" aria-label="Selecionar ' + product.name + ' com estampa ' + print.name + '">' +
+            '<div class="print-preview" style="background:' + printGradient + ';">' +
+              '<img src="' + print.image + '" alt="' + print.name + '" onerror="this.style.display=\'none\';" />' +
+              '<div class="print-pattern-overlay">' + patternEmojis + '</div>' +
+              '<span class="print-emoji-center">' + print.emoji + '</span>' +
+              '<div class="print-hover-label"><span>Eu quero! 💕</span></div>' +
+            '</div>' +
+            '<div class="print-info">' +
+              '<h4>' + print.name + '</h4>' +
+              '<p>' + print.description + '</p>' +
+            '</div>' +
+          '</button>';
+        }).join("") + '</div>';
 
-      printsGrid.innerHTML = `<div class="prints-grid${isSingle ? " single" : ""}">` +
-        product.prints.map(print => {
-          const printGradient = `linear-gradient(135deg, ${print.colors[0]}, ${print.colors[1]}, ${print.colors[2] || print.colors[1]})`;
-          // Build pattern overlay emojis
-          let patternEmojis = "";
-          for (let j = 0; j < 20; j++) patternEmojis += `<span>${print.emoji}</span>`;
-
-          return `
-            <button class="print-card" data-print-id="${print.id}" aria-label="Selecionar ${product.name} com estampa ${print.name}">
-              <div class="print-preview" style="background:${printGradient};">
-                <img src="${print.image}" alt="${print.name}"
-                  onerror="this.style.display='none';" />
-                <div class="print-pattern-overlay">${patternEmojis}</div>
-                <span class="print-emoji-center">${print.emoji}</span>
-                <div class="print-hover-label"><span>Eu quero! 💕</span></div>
-              </div>
-              <div class="print-info">
-                <h4>${print.name}</h4>
-                <p>${print.description}</p>
-              </div>
-            </button>
-          `;
-        }).join("") + `</div>`;
-
-      // Add click listeners
-      printsGrid.querySelectorAll(".print-card").forEach(card => {
-        card.addEventListener("click", () => {
-          const printId = card.dataset.printId;
-          const print = product.prints.find(p => p.id === printId);
+      printsGrid.querySelectorAll(".print-card").forEach(function(card) {
+        card.addEventListener("click", function() {
+          var printId = card.dataset.printId;
+          var print = product.prints.find(function(p) { return p.id === printId; });
           if (print) openModal(product, print);
         });
       });
@@ -1012,28 +1002,25 @@
 
     // ===== MODAL =====
     function openModal(product, print) {
-      const printGradient = `linear-gradient(135deg, ${print.colors[0]}, ${print.colors[1]}, ${print.colors[2] || print.colors[1]})`;
+      var printGradient = "linear-gradient(135deg, " + print.colors[0] + ", " + print.colors[1] + ", " + (print.colors[2] || print.colors[1]) + ")";
 
       modalHeader.style.background = printGradient;
-      modalHeader.innerHTML = `
-        <img src="${print.image}" alt="${print.name}" class="modal-header-img"
-          onerror="this.style.display='none';" />
-        <span class="emoji">${print.emoji}</span>
-        <span class="tag">${product.emoji} ${product.name}</span>
-      `;
+      modalHeader.innerHTML =
+        '<img src="' + print.image + '" alt="' + print.name + '" class="modal-header-img" onerror="this.style.display=\'none\';" />' +
+        '<span class="emoji">' + print.emoji + '</span>' +
+        '<span class="tag">' + product.emoji + ' ' + product.name + '</span>';
 
-      modalSummary.innerHTML = `
-        <div class="row"><span class="label">Peça</span><span class="value">${product.name}</span></div>
-        <div class="row"><span class="label">Estampa</span><span class="value">${print.name}</span></div>
-        <div class="row"><span class="label">Tamanhos</span><span class="value">${product.sizes}</span></div>
-        <hr class="divider" />
-        <div class="row price"><span class="label">Valor</span><span class="value">${product.price}</span></div>
-      `;
+      modalSummary.innerHTML =
+        '<div class="row"><span class="label">Peça</span><span class="value">' + product.name + '</span></div>' +
+        '<div class="row"><span class="label">Estampa</span><span class="value">' + print.name + '</span></div>' +
+        '<div class="row"><span class="label">Tamanhos</span><span class="value">' + product.sizes + '</span></div>' +
+        '<hr class="divider" />' +
+        '<div class="row price"><span class="label">Valor</span><span class="value">' + product.price + '</span></div>';
 
-      const message = encodeURIComponent(
-        `Olá, tenho interesse na ${product.name} com a estampa ${print.name}. Poderia me enviar mais informações? 😊`
+      var message = encodeURIComponent(
+        "Olá, tenho interesse na " + product.name + " com a estampa " + print.name + ". Poderia me enviar mais informações? 😊"
       );
-      whatsappLink.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${message}`;
+      whatsappLink.href = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + message;
 
       modal.classList.add("open");
       document.body.style.overflow = "hidden";
@@ -1047,7 +1034,7 @@
     modalBackdrop.addEventListener("click", closeModal);
     modalClose.addEventListener("click", closeModal);
     modalBack.addEventListener("click", closeModal);
-    document.addEventListener("keydown", (e) => {
+    document.addEventListener("keydown", function(e) {
       if (e.key === "Escape") closeModal();
     });
 
