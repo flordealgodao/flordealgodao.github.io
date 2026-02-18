@@ -7,12 +7,25 @@
   <meta name="description" content="Flor de Algodão — Roupas infantis femininas encantadoras em Rio Verde, Goiás. Vestidos, conjuntos, vestido com bolsa e macacões com estampas exclusivas." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Dancing+Script:wght@600&family=Inter:wght@400;500;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
   <style>
+    :root {
+      --cor-fundo-hero: #FFF5F7;
+      --cor-fundo-sobre: #FAFAF5;
+      --cor-primaria: #D48BA0;
+      --cor-texto-titulo: #5D4037;
+      --cor-texto-corpo: #666666;
+      --cor-destaque: #8FA396;
+      --rosa-forte: #ec4899;
+      --rosa-medio: #f9a8d4;
+      --rosa-claro: #fce7f3;
+      --rosa-bg: #fdf2f8;
+    }
+
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
     body {
-      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      font-family: 'Inter', 'Lato', system-ui, -apple-system, sans-serif;
       color: #374151;
       background: #fff;
       line-height: 1.6;
@@ -23,9 +36,10 @@
 
     .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
     .serif { font-family: 'Playfair Display', Georgia, serif; }
+    .cursive { font-family: 'Dancing Script', cursive; }
     .text-center { text-align: center; }
     .gradient-text {
-      background: linear-gradient(135deg, #f9a8d4, #f472b6, #ec4899);
+      background: linear-gradient(135deg, var(--rosa-medio), #f472b6, var(--rosa-forte));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -43,57 +57,133 @@
       from { opacity: 0; transform: translateY(16px); }
       to { opacity: 1; transform: translateY(0); }
     }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
 
     /* ===== HERO ===== */
     .hero {
       position: relative; overflow: hidden;
-      background: linear-gradient(135deg, #fdf2f8, #fff1f2, #fce7f3);
-      padding: 60px 0 70px;
+      background-color: var(--cor-fundo-hero);
+      background-image:
+        radial-gradient(ellipse at 10% 20%, rgba(212,139,160,0.12) 0%, transparent 50%),
+        radial-gradient(ellipse at 90% 80%, rgba(143,163,150,0.1) 0%, transparent 50%);
+      padding: 60px 0 50px;
+      border-bottom: 3px solid #fff;
     }
     .hero-blob { position: absolute; border-radius: 50%; filter: blur(60px); pointer-events: none; }
-    .hero-blob-1 { width: 260px; height: 260px; background: rgba(251,191,210,0.3); top: -40px; left: -40px; }
-    .hero-blob-2 { width: 200px; height: 200px; background: rgba(249,168,212,0.25); top: 60px; right: 20px; }
-    .hero-blob-3 { width: 230px; height: 230px; background: rgba(253,164,175,0.2); bottom: 20px; left: 30%; }
+    .hero-blob-1 { width: 260px; height: 260px; background: rgba(212,139,160,0.15); top: -40px; left: -40px; }
+    .hero-blob-2 { width: 200px; height: 200px; background: rgba(143,163,150,0.12); top: 60px; right: 20px; }
+    .hero-blob-3 { width: 230px; height: 230px; background: rgba(198,156,109,0.1); bottom: 20px; left: 30%; }
     .hero-content { position: relative; max-width: 700px; margin: 0 auto; text-align: center; }
 
-    .hero-logo { display: flex; align-items: center; justify-content: center; margin-bottom: 24px; }
-    .hero-logo img { max-height: 90px; width: auto; object-fit: contain; filter: drop-shadow(0 2px 8px rgba(0,0,0,0.06)); }
+    .hero-logo { display: flex; align-items: center; justify-content: center; margin-bottom: 28px; }
+    .hero-logo img {
+      max-height: 120px; width: auto; object-fit: contain;
+      filter: drop-shadow(0 4px 12px rgba(0,0,0,0.08));
+    }
     .hero-logo-fallback {
       display: none; align-items: center; gap: 10px;
       background: rgba(255,255,255,0.75); backdrop-filter: blur(8px);
-      padding: 10px 24px; border-radius: 50px; box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+      padding: 12px 28px; border-radius: 50px; box-shadow: 0 2px 10px rgba(0,0,0,0.04);
     }
     .hero-logo-fallback .icon { font-size: 1.5rem; }
-    .hero-logo-fallback .name { font-weight: 700; letter-spacing: 0.5px; color: #ec4899; font-size: 1.15rem; }
+    .hero-logo-fallback .name { font-weight: 700; letter-spacing: 0.5px; color: var(--cor-primaria); font-size: 1.15rem; }
 
-    .hero h1 { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 700; line-height: 1.15; margin-bottom: 20px; color: #1f2937; }
-    .hero p.hero-subtitle { font-size: clamp(1rem, 2.2vw, 1.12rem); color: #9ca3af; max-width: 540px; margin: 0 auto 32px; }
-    .hero p.hero-subtitle strong.pink { color: #ec4899; }
-    .hero p.hero-subtitle strong.purple { color: #a78bfa; }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 700;
+      line-height: 1.15; margin-bottom: 20px; color: #333;
+    }
+    .hero h1 .accent {
+      font-family: 'Playfair Display', serif;
+      color: var(--cor-primaria); font-style: italic;
+    }
+
+    .hero p.hero-subtitle {
+      font-size: clamp(1rem, 2.2vw, 1.12rem); color: var(--cor-texto-corpo);
+      max-width: 560px; margin: 0 auto 32px; line-height: 1.7;
+    }
+    .hero p.hero-subtitle strong { color: var(--cor-texto-titulo); }
 
     .btn-primary {
       display: inline-flex; align-items: center; gap: 10px;
-      background: linear-gradient(135deg, #f9a8d4, #ec4899); color: #fff;
-      font-weight: 600; font-size: 1.05rem; padding: 16px 36px; border-radius: 50px;
-      box-shadow: 0 8px 24px rgba(236,72,153,0.3); transition: transform 0.3s, box-shadow 0.3s;
+      background-color: var(--cor-primaria); color: #fff;
+      font-weight: 700; font-size: 1.1rem; padding: 16px 40px; border-radius: 50px;
+      box-shadow: 0 4px 15px rgba(212,139,160,0.3);
+      transition: transform 0.2s, background-color 0.2s, box-shadow 0.2s;
     }
-    .btn-primary:hover { transform: scale(1.05); box-shadow: 0 12px 32px rgba(236,72,153,0.4); }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      background-color: #bf7a8d;
+      box-shadow: 0 8px 24px rgba(212,139,160,0.4);
+    }
     .btn-primary svg { transition: transform 0.3s; }
     .btn-primary:hover svg { transform: translateY(3px); }
 
-    .trust-badges { display: flex; flex-wrap: wrap; justify-content: center; gap: 24px; margin-top: 40px; font-size: 0.88rem; color: #9ca3af; }
+    .trust-badges {
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 28px;
+      margin-top: 50px; font-size: 0.9rem; color: var(--cor-texto-titulo); font-weight: 600;
+    }
     .trust-badges > div { display: flex; align-items: center; gap: 8px; }
 
+    /* ===== ABOUT / DIFERENCIAIS ===== */
+    .about-section {
+      background-color: var(--cor-fundo-sobre);
+      text-align: center; padding: 70px 20px 60px;
+    }
+    .about-title {
+      font-family: 'Dancing Script', cursive;
+      font-size: clamp(2rem, 5vw, 3rem); color: #C69C6D; margin-bottom: 30px;
+    }
+    .about-text {
+      max-width: 800px; margin: 0 auto 40px;
+      color: var(--cor-texto-corpo); font-size: 1.05rem; line-height: 1.8;
+    }
+    .about-text strong { color: var(--cor-texto-titulo); }
+
+    .features-container {
+      display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; margin-top: 40px;
+    }
+    .feature-item { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+    .icon-circle {
+      width: 68px; height: 68px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.6rem; box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+      transition: transform 0.3s;
+    }
+    .icon-circle:hover { transform: scale(1.1); }
+    .icon-seda { background-color: #E8F5E9; color: var(--cor-destaque); }
+    .icon-pratico { background-color: #FFF0F5; color: var(--cor-primaria); }
+    .icon-cores { background-color: #FFF8E1; color: #FBC02D; }
+    .feature-label {
+      font-family: 'Playfair Display', serif; color: var(--cor-texto-titulo); font-size: 1.05rem;
+    }
+
     /* ===== CATALOG ===== */
-    .catalog { background: linear-gradient(180deg, #fff 0%, rgba(253,242,248,0.3) 50%, #fff 100%); padding: 70px 0 80px; }
-    .section-badge { display: inline-block; background: #fce7f3; color: #ec4899; font-size: 0.85rem; font-weight: 500; padding: 6px 18px; border-radius: 50px; margin-bottom: 12px; }
-    .catalog h2 { font-size: clamp(1.6rem, 4vw, 2.2rem); font-weight: 700; color: #1f2937; margin-bottom: 12px; }
-    .catalog > .container > p { color: #9ca3af; max-width: 520px; margin: 0 auto 48px; }
+    .catalog {
+      background: linear-gradient(180deg, #fff 0%, rgba(253,242,248,0.3) 50%, #fff 100%);
+      padding: 70px 0 80px;
+    }
+    .section-badge {
+      display: inline-block; background: var(--rosa-claro); color: var(--cor-primaria);
+      font-size: 0.85rem; font-weight: 600; padding: 6px 18px; border-radius: 50px; margin-bottom: 12px;
+    }
+    .catalog h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 4vw, 2.2rem); font-weight: 700; color: var(--cor-texto-titulo); margin-bottom: 12px;
+    }
+    .catalog > .container > p { color: var(--cor-texto-corpo); max-width: 520px; margin: 0 auto 48px; }
 
     .step-header { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
-    .step-number { width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 50%; color: #fff; font-size: 0.85rem; font-weight: 700; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
-    .step-number.pink { background: linear-gradient(135deg, #f9a8d4, #ec4899); }
-    .step-number.purple { background: linear-gradient(135deg, #f9a8d4, #db2777); }
+    .step-number {
+      width: 32px; height: 32px; display: flex; align-items: center; justify-content: center;
+      border-radius: 50%; color: #fff; font-size: 0.85rem; font-weight: 700;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .step-number.pink { background: linear-gradient(135deg, var(--rosa-medio), var(--cor-primaria)); }
+    .step-number.purple { background: linear-gradient(135deg, var(--rosa-medio), #b5628a); }
     .step-header h3 { font-size: 1.1rem; font-weight: 600; color: #374151; }
     .step-header h3 span { font-weight: 400; color: #9ca3af; font-size: 0.9rem; margin-left: 6px; }
 
@@ -104,17 +194,24 @@
 
     .product-card {
       position: relative; display: flex; flex-direction: column; align-items: center;
-      background: rgba(255,255,255,0.85); border: 2px solid #fce7f3; border-radius: 24px;
+      background: rgba(255,255,255,0.85); border: 2px solid var(--rosa-claro); border-radius: 24px;
       padding: 24px 14px; transition: all 0.3s ease; outline: none;
     }
-    .product-card:hover { transform: translateY(-4px); border-color: #f9a8d4; box-shadow: 0 12px 32px rgba(236,72,153,0.12); }
-    .product-card.selected { border-color: #ec4899; background: #fff; box-shadow: 0 12px 36px rgba(236,72,153,0.18); transform: scale(1.03); }
-    .product-card:focus-visible { outline: 2px solid #ec4899; outline-offset: 2px; }
+    .product-card:hover {
+      transform: translateY(-4px); border-color: var(--rosa-medio);
+      box-shadow: 0 12px 32px rgba(212,139,160,0.15);
+    }
+    .product-card.selected {
+      border-color: var(--cor-primaria); background: #fff;
+      box-shadow: 0 12px 36px rgba(212,139,160,0.2); transform: scale(1.03);
+    }
+    .product-card:focus-visible { outline: 2px solid var(--cor-primaria); outline-offset: 2px; }
 
     .product-check {
       position: absolute; top: 10px; right: 10px; width: 26px; height: 26px; border-radius: 50%;
-      background: linear-gradient(135deg, #f9a8d4, #ec4899); display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 4px 10px rgba(236,72,153,0.3); opacity: 0; transform: scale(0.6); transition: all 0.3s;
+      background: linear-gradient(135deg, var(--rosa-medio), var(--cor-primaria));
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 10px rgba(212,139,160,0.3); opacity: 0; transform: scale(0.6); transition: all 0.3s;
     }
     .product-card.selected .product-check { opacity: 1; transform: scale(1); }
 
@@ -125,17 +222,27 @@
     .product-icon img { width: 100%; height: 100%; object-fit: cover; border-radius: 18px; }
     .product-card:hover .product-icon, .product-card.selected .product-icon { transform: scale(1.1); }
 
-    .product-card h4 { font-size: 0.9rem; font-weight: 700; color: #374151; margin-bottom: 4px; text-align: center; }
+    .product-card h4 { font-size: 0.9rem; font-weight: 700; color: var(--cor-texto-titulo); margin-bottom: 4px; text-align: center; }
     @media (min-width: 768px) { .product-card h4 { font-size: 1rem; } }
-    .product-card .desc { font-size: 0.75rem; color: #9ca3af; text-align: center; margin-bottom: 10px; line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-    .product-price { background: linear-gradient(135deg, #fdf2f8, #fce7f3); padding: 5px 14px; border-radius: 50px; font-size: 0.85rem; font-weight: 700; color: #db2777; }
+    .product-card .desc {
+      font-size: 0.75rem; color: var(--cor-texto-corpo); text-align: center; margin-bottom: 10px; line-height: 1.5;
+      display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+    }
+    .product-price {
+      background: linear-gradient(135deg, var(--rosa-bg), var(--rosa-claro));
+      padding: 5px 14px; border-radius: 50px; font-size: 0.85rem; font-weight: 700; color: #b5628a;
+    }
     .product-prints-count { margin-top: 10px; font-size: 0.75rem; color: #9ca3af; display: flex; align-items: center; gap: 4px; }
 
     /* ===== SELECTED INFO BAR ===== */
-    .selected-info { display: flex; align-items: center; gap: 12px; background: linear-gradient(135deg, #fdf2f8, #fce7f3); border-radius: 18px; padding: 16px 20px; margin-bottom: 20px; }
+    .selected-info {
+      display: flex; align-items: center; gap: 12px;
+      background: linear-gradient(135deg, var(--rosa-bg), var(--rosa-claro));
+      border-radius: 18px; padding: 16px 20px; margin-bottom: 20px;
+    }
     .selected-info-icon { font-size: 1.6rem; }
     .selected-info-icon img { width: 40px; height: 40px; border-radius: 10px; object-fit: cover; }
-    .selected-info strong { font-size: 0.9rem; color: #374151; display: block; }
+    .selected-info strong { font-size: 0.9rem; color: var(--cor-texto-titulo); display: block; }
     .selected-info small { font-size: 0.78rem; color: #9ca3af; }
 
     /* ===== PRINT CARDS ===== */
@@ -146,14 +253,17 @@
 
     .print-card {
       position: relative; display: flex; flex-direction: column; overflow: hidden;
-      border-radius: 20px; border: 2px solid #fce7f3; background: #fff;
+      border-radius: 20px; border: 2px solid var(--rosa-claro); background: #fff;
       box-shadow: 0 2px 8px rgba(0,0,0,0.04); transition: all 0.3s; outline: none;
       animation: fadeIn 0.4s ease-out backwards;
     }
     .print-card:nth-child(2) { animation-delay: 0.08s; }
     .print-card:nth-child(3) { animation-delay: 0.16s; }
-    .print-card:hover { transform: translateY(-5px); border-color: #f9a8d4; box-shadow: 0 12px 32px rgba(236,72,153,0.15); }
-    .print-card:focus-visible { outline: 2px solid #ec4899; outline-offset: 2px; }
+    .print-card:hover {
+      transform: translateY(-5px); border-color: var(--rosa-medio);
+      box-shadow: 0 12px 32px rgba(212,139,160,0.18);
+    }
+    .print-card:focus-visible { outline: 2px solid var(--cor-primaria); outline-offset: 2px; }
 
     .print-preview {
       position: relative; aspect-ratio: 3 / 4; display: flex; align-items: center;
@@ -176,38 +286,46 @@
     .print-hover-label { position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%); z-index: 3; }
     .print-hover-label span {
       background: rgba(255,255,255,0.92); padding: 8px 18px; border-radius: 50px;
-      font-size: 0.85rem; font-weight: 600; color: #db2777; box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      font-size: 0.85rem; font-weight: 600; color: #b5628a; box-shadow: 0 4px 12px rgba(0,0,0,0.1);
       opacity: 0; transform: translateY(12px); transition: all 0.3s; white-space: nowrap;
     }
     .print-card:hover .print-hover-label span { opacity: 1; transform: translateY(0); }
 
     .print-info { padding: 14px 16px; flex: 1; display: flex; flex-direction: column; }
-    .print-info h4 { font-size: 0.95rem; font-weight: 700; color: #374151; margin-bottom: 4px; }
-    .print-info p { font-size: 0.82rem; color: #9ca3af; line-height: 1.5; }
-    /* Tags de tamanho dentro do card de estampa */
+    .print-info h4 { font-size: 0.95rem; font-weight: 700; color: var(--cor-texto-titulo); margin-bottom: 4px; }
+    .print-info p { font-size: 0.82rem; color: var(--cor-texto-corpo); line-height: 1.5; }
     .print-sizes { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
     .print-size-tag {
       display: inline-flex; align-items: center; justify-content: center;
       min-width: 32px; padding: 3px 10px; border-radius: 50px;
-      background: linear-gradient(135deg, #fdf2f8, #fce7f3);
-      font-size: 0.75rem; font-weight: 700; color: #db2777;
+      background: linear-gradient(135deg, var(--rosa-bg), var(--rosa-claro));
+      font-size: 0.75rem; font-weight: 700; color: #b5628a;
     }
 
     .prints-hint { text-align: center; font-size: 0.85rem; color: #d1d5db; margin-top: 24px; }
 
     /* ===== FOOTER ===== */
-    .site-footer { background: linear-gradient(180deg, #fff, #fdf2f8); padding: 60px 0 40px; }
-    .footer-feature-single { max-width: 420px; margin: 0 auto 40px; background: #fff; border-radius: 20px; padding: 28px 24px; box-shadow: 0 2px 10px rgba(0,0,0,0.04); text-align: center; }
+    .site-footer {
+      background: linear-gradient(180deg, var(--cor-fundo-sobre), var(--rosa-bg));
+      padding: 60px 0 40px;
+    }
+    .footer-feature-single {
+      max-width: 420px; margin: 0 auto 40px; background: #fff; border-radius: 20px;
+      padding: 28px 24px; box-shadow: 0 2px 10px rgba(0,0,0,0.04); text-align: center;
+    }
     .footer-feature-single .icon { font-size: 1.8rem; margin-bottom: 12px; display: block; }
-    .footer-feature-single h4 { font-weight: 600; color: #374151; margin-bottom: 6px; }
-    .footer-feature-single p { font-size: 0.85rem; color: #9ca3af; }
+    .footer-feature-single h4 { font-weight: 600; color: var(--cor-texto-titulo); margin-bottom: 6px; }
+    .footer-feature-single p { font-size: 0.85rem; color: var(--cor-texto-corpo); }
     .footer-brand { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 8px; }
-    .footer-brand img { max-height: 40px; width: auto; object-fit: contain; }
+    .footer-brand img { max-height: 44px; width: auto; object-fit: contain; }
     .footer-brand .icon { font-size: 1.4rem; }
-    .footer-brand .name { font-weight: 700; letter-spacing: 0.5px; color: #ec4899; font-size: 1.15rem; }
-    .footer-tagline { font-size: 0.88rem; color: #9ca3af; margin-bottom: 6px; }
-    .footer-location { font-size: 0.82rem; color: #d1d5db; margin-bottom: 28px; }
-    .footer-bottom { border-top: 1px solid #fce7f3; padding-top: 20px; font-size: 0.75rem; color: #d1d5db; text-align: center; }
+    .footer-brand .name { font-weight: 700; letter-spacing: 0.5px; color: var(--cor-primaria); font-size: 1.15rem; }
+    .footer-tagline { font-size: 0.88rem; color: var(--cor-texto-corpo); margin-bottom: 6px; }
+    .footer-location { font-size: 0.82rem; color: #bbb; margin-bottom: 28px; }
+    .footer-bottom {
+      border-top: 1px solid var(--rosa-claro); padding-top: 20px;
+      font-size: 0.75rem; color: #ccc; text-align: center;
+    }
 
     /* ===== MODAL ===== */
     .modal-overlay {
@@ -224,14 +342,12 @@
       position: relative; width: 100%; max-width: 420px; max-height: 92vh;
       background: #fff; border-radius: 28px 28px 0 0;
       overflow-y: auto; overflow-x: hidden;
-      box-shadow: 0 -8px 64px rgba(0,0,0,0.18);
-      animation: modalSlideUp 0.35s ease-out;
+      box-shadow: 0 -8px 64px rgba(0,0,0,0.18); animation: modalSlideUp 0.35s ease-out;
     }
     @media (min-width: 560px) {
       .modal-box {
         border-radius: 28px; max-height: 85vh;
-        box-shadow: 0 24px 64px rgba(0,0,0,0.18);
-        animation: modalIn 0.35s ease-out;
+        box-shadow: 0 24px 64px rgba(0,0,0,0.18); animation: modalIn 0.35s ease-out;
       }
     }
 
@@ -257,7 +373,7 @@
       position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%);
       background: rgba(255,255,255,0.92); backdrop-filter: blur(6px);
       padding: 6px 18px; border-radius: 50px; font-size: 0.82rem; font-weight: 600;
-      color: #4b5563; box-shadow: 0 2px 10px rgba(0,0,0,0.08); white-space: nowrap;
+      color: var(--cor-texto-titulo); box-shadow: 0 2px 10px rgba(0,0,0,0.08); white-space: nowrap;
     }
     .modal-header-fallback {
       width: 100%; padding: 40px 24px 28px;
@@ -269,19 +385,21 @@
     .modal-body h3 { text-align: center; font-size: 1.2rem; font-weight: 700; color: #1f2937; margin-bottom: 4px; }
     .modal-body .subtitle { text-align: center; font-size: 0.85rem; color: #9ca3af; margin-bottom: 24px; }
 
-    .modal-summary { background: linear-gradient(135deg, #fdf2f8, #fce7f3); border-radius: 18px; padding: 18px 20px; margin-bottom: 24px; }
+    .modal-summary {
+      background: linear-gradient(135deg, var(--rosa-bg), var(--rosa-claro));
+      border-radius: 18px; padding: 18px 20px; margin-bottom: 24px;
+    }
     .modal-summary .row { display: flex; align-items: center; justify-content: space-between; font-size: 0.88rem; padding: 4px 0; }
     .modal-summary .row .label { color: #9ca3af; }
-    .modal-summary .row .value { font-weight: 600; color: #374151; }
-    .modal-summary .divider { border: none; border-top: 1px solid rgba(236,72,153,0.2); margin: 10px 0; }
-    .modal-summary .row.price .value { font-size: 1.1rem; font-weight: 700; color: #db2777; }
-    /* Tamanhos no modal */
+    .modal-summary .row .value { font-weight: 600; color: var(--cor-texto-titulo); }
+    .modal-summary .divider { border: none; border-top: 1px solid rgba(212,139,160,0.25); margin: 10px 0; }
+    .modal-summary .row.price .value { font-size: 1.1rem; font-weight: 700; color: #b5628a; }
     .modal-sizes { display: flex; flex-wrap: wrap; gap: 6px; }
     .modal-size-tag {
       display: inline-flex; align-items: center; justify-content: center;
       min-width: 36px; padding: 4px 12px; border-radius: 50px;
-      background: #fff; border: 1.5px solid #f9a8d4;
-      font-size: 0.82rem; font-weight: 700; color: #db2777;
+      background: #fff; border: 1.5px solid var(--rosa-medio);
+      font-size: 0.82rem; font-weight: 700; color: #b5628a;
     }
 
     .btn-whatsapp {
@@ -298,12 +416,18 @@
       color: #9ca3af; border-radius: 18px; transition: background 0.2s, color 0.2s;
     }
     .btn-back:hover { background: #f9fafb; color: #4b5563; }
+
+    /* ===== RESPONSIVIDADE ===== */
+    @media (max-width: 768px) {
+      .trust-badges { flex-direction: column; gap: 10px; }
+      .features-container { gap: 24px; }
+    }
   </style>
 </head>
 <body>
 
-  <!-- HERO -->
-  <section class="hero">
+  <!-- ==================== HERO ==================== -->
+  <header class="hero">
     <div class="hero-blob hero-blob-1"></div>
     <div class="hero-blob hero-blob-2"></div>
     <div class="hero-blob hero-blob-3"></div>
@@ -316,8 +440,11 @@
           <span class="name serif">Flor de Algodão</span>
         </div>
       </div>
-      <h1 class="serif">Moda Infantil <span class="gradient-text">com Amor</span></h1>
-      <p class="hero-subtitle">Peças encantadoras para as pequenas princesas de <strong class="pink">Rio Verde</strong>. Cada detalhe pensado com carinho para trazer <strong class="pink">conforto</strong> e <strong class="purple">estilo</strong> ao dia a dia das meninas.</p>
+      <h1 class="serif">Moda Infantil <span class="accent">com Amor</span></h1>
+      <p class="hero-subtitle">
+        Peças encantadoras para as pequenas princesas de <strong>Rio Verde</strong>.
+        Cada detalhe pensado com carinho para trazer <strong>conforto</strong> e <strong>estilo</strong> ao dia a dia das meninas.
+      </p>
       <a href="#catalogo" class="btn-primary">
         Ver Coleção
         <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -330,9 +457,33 @@
         <div><span style="font-size:1.1rem;">💝</span><span>Feito com Amor</span></div>
       </div>
     </div>
+  </header>
+
+  <!-- ==================== SOBRE / DIFERENCIAIS ==================== -->
+  <section class="about-section">
+    <h2 class="about-title cursive">Vestindo a Infância com Leveza e Cor</h2>
+    <div class="about-text">
+      <p>Na <strong>Flor de Algodão</strong>, acreditamos que roupa de criança tem que ter movimento e alegria. Nossas coleções são confeccionadas em <strong>Crepe Sedinha Premium (gramatura 130)</strong>, um tecido escolhido especialmente pelo seu "toque de seda": ele é fresco, extremamente macio na pele e tem um caimento leve que permite que as pequenas brinquem com total liberdade.</p>
+      <br>
+      <p>Somos uma marca que nasceu do amor pela infância. <strong>Cada estampa vibrante, cada modelagem soltinha e cada acabamento delicado passa pela nossa curadoria especial.</strong> Nosso objetivo é entregar peças que não desbotam, não amassam e estão sempre prontas para criar novas memórias.</p>
+    </div>
+    <div class="features-container">
+      <div class="feature-item">
+        <div class="icon-circle icon-seda">☁️</div>
+        <span class="feature-label">Toque de Seda</span>
+      </div>
+      <div class="feature-item">
+        <div class="icon-circle icon-pratico">⚡</div>
+        <span class="feature-label">Não Amassa</span>
+      </div>
+      <div class="feature-item">
+        <div class="icon-circle icon-cores">🎨</div>
+        <span class="feature-label">Cores Vivas</span>
+      </div>
+    </div>
   </section>
 
-  <!-- CATALOG -->
+  <!-- ==================== CATÁLOGO ==================== -->
   <section class="catalog" id="catalogo">
     <div class="container">
       <div class="text-center">
@@ -355,7 +506,7 @@
     </div>
   </section>
 
-  <!-- FOOTER -->
+  <!-- ==================== FOOTER ==================== -->
   <footer class="site-footer">
     <div class="container">
       <div class="footer-feature-single">
@@ -365,19 +516,19 @@
       </div>
       <div class="text-center">
         <div class="footer-brand">
-          <img src="logo.svg" alt="Flor de Algodão" style="max-height:36px;"
+          <img src="logo.svg" alt="Flor de Algodão" style="max-height:44px;"
             onerror="this.style.display='none'; this.nextElementSibling.style.display='inline'; this.nextElementSibling.nextElementSibling.style.display='inline';" />
           <span class="icon" style="display:none;">🌸</span>
           <span class="name serif">Flor de Algodão</span>
         </div>
-        <p class="footer-tagline">Vestindo sonhos, encantando sorrisos ✨</p>
+        <p class="footer-tagline cursive" style="font-size:1.1rem; color:#C69C6D;">Vestindo sonhos, encantando sorrisos ✨</p>
         <p class="footer-location">📍 Rio Verde — Goiás</p>
         <div class="footer-bottom">© <span id="footerYear"></span> Flor de Algodão — Moda Infantil Feminina. Todos os direitos reservados.</div>
       </div>
     </div>
   </footer>
 
-  <!-- MODAL -->
+  <!-- ==================== MODAL ==================== -->
   <div class="modal-overlay" id="modal">
     <div class="modal-backdrop" id="modalBackdrop"></div>
     <div class="modal-box">
@@ -402,6 +553,7 @@
     </div>
   </div>
 
+  <!-- ==================== JAVASCRIPT ==================== -->
   <script>
     var WHATSAPP_NUMBER = "550064992508144";
 
@@ -412,7 +564,7 @@
         description: "O lookinho completo! Vestido rodado que acompanha uma bolsinha combinando para guardar os tesouros das pequenas!",
         price: "R$ 84,90",
         emoji: "👗👜",
-        thumb: "vestido-bolsinha-thumb.jpg",
+        thumb: "vestido-bolsinha-thumb.jpeg",
         colors: ["#FECDD3", "#FDA4AF", "#FB7185"],
         prints: [
           {
@@ -441,7 +593,7 @@
         description: "Vestidos soltinhos, confortáveis e cheios de cor 🌈 Perfeitos para acompanhar cada fase da infância com leveza.",
         price: "R$ 69,90",
         emoji: "👗",
-        thumb: "vestido-thumb.jpg",
+        thumb: "vestido-thumb.jpeg",
         colors: ["#FED7AA", "#FDBA74", "#FB923C"],
         prints: [
           {
@@ -461,7 +613,7 @@
         description: "Blusa + short fresquinho, ideal para os dias quentes de verão.",
         price: "R$ 75,90",
         emoji: "☀️",
-        thumb: "conjuntinho-verao-thumb.jpg",
+        thumb: "conjuntinho-verao-thumb.jpeg",
         colors: ["#FBCFE8", "#F9A8D4", "#F472B6"],
         prints: [
           {
@@ -490,7 +642,7 @@
         description: "Proteção e estilo para os dias mais fresquinhos. Tecido macio que abraça! 🧥",
         price: "R$ 89,90",
         emoji: "🌴",
-        thumb: "conjunto-tropical-thumb.jpg",
+        thumb: "conjunto-tropical-thumb.jpeg",
         colors: ["#A7F3D0", "#6EE7B7", "#34D399"],
         prints: [
           {
@@ -510,7 +662,7 @@
         description: "Macacão prático e estiloso. Peça única cheia de personalidade!",
         price: "R$ 79,90",
         emoji: "🧸",
-        thumb: "macacao-thumb.jpg",
+        thumb: "macacao-thumb.jpeg",
         colors: ["#E0F2FE", "#BAE6FD", "#7DD3FC"],
         prints: [
           {
@@ -576,11 +728,9 @@
           var printGradient = "linear-gradient(135deg, " + print.colors[0] + ", " + print.colors[1] + ", " + (print.colors[2] || print.colors[1]) + ")";
           var patternEmojis = "";
           for (var j = 0; j < 20; j++) patternEmojis += "<span>" + print.emoji + "</span>";
-
           var sizeTags = print.sizes.map(function(s) {
             return '<span class="print-size-tag">' + s + '</span>';
           }).join("");
-
           return '<button class="print-card" data-print-id="' + print.id + '" aria-label="Selecionar ' + product.name + ' com estampa ' + print.name + '">' +
             '<div class="print-preview" style="background:' + printGradient + ';">' +
               '<img src="' + print.image + '" alt="' + print.name + '" onload="this.parentElement.classList.add(\'has-image\');" onerror="this.style.display=\'none\';" />' +
@@ -588,9 +738,7 @@
               '<span class="print-emoji-center">' + print.emoji + '</span>' +
               '<div class="print-hover-label"><span>Eu quero! 💕</span></div>' +
             '</div>' +
-            '<div class="print-info">' +
-              '<h4>' + print.name + '</h4>' +
-              '<p>' + print.description + '</p>' +
+            '<div class="print-info"><h4>' + print.name + '</h4><p>' + print.description + '</p>' +
               '<div class="print-sizes">' + sizeTags + '</div>' +
             '</div>' +
           '</button>';
