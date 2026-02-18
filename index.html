@@ -9,7 +9,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
-    /* ===== RESET & BASE ===== */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
     body {
@@ -22,7 +21,6 @@
     button { cursor: pointer; font-family: inherit; border: none; background: none; }
     a { text-decoration: none; color: inherit; }
 
-    /* ===== UTILITIES ===== */
     .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
     .serif { font-family: 'Playfair Display', Georgia, serif; }
     .text-center { text-align: center; }
@@ -33,10 +31,13 @@
       background-clip: text;
     }
 
-    /* ===== KEYFRAMES ===== */
     @keyframes modalIn {
       from { opacity: 0; transform: scale(0.9) translateY(20px); }
       to { opacity: 1; transform: scale(1) translateY(0); }
+    }
+    @keyframes modalSlideUp {
+      from { opacity: 0; transform: translateY(100%); }
+      to { opacity: 1; transform: translateY(0); }
     }
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(16px); }
@@ -45,622 +46,284 @@
 
     /* ===== HERO ===== */
     .hero {
-      position: relative;
-      overflow: hidden;
+      position: relative; overflow: hidden;
       background: linear-gradient(135deg, #fdf2f8, #fff1f2, #fce7f3);
       padding: 60px 0 70px;
     }
-    .hero-blob {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(60px);
-      pointer-events: none;
-    }
+    .hero-blob { position: absolute; border-radius: 50%; filter: blur(60px); pointer-events: none; }
     .hero-blob-1 { width: 260px; height: 260px; background: rgba(251,191,210,0.3); top: -40px; left: -40px; }
     .hero-blob-2 { width: 200px; height: 200px; background: rgba(249,168,212,0.25); top: 60px; right: 20px; }
     .hero-blob-3 { width: 230px; height: 230px; background: rgba(253,164,175,0.2); bottom: 20px; left: 30%; }
-
     .hero-content { position: relative; max-width: 700px; margin: 0 auto; text-align: center; }
 
-    /* ===== LOGO ===== */
-    .hero-logo {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 24px;
-    }
-    .hero-logo img {
-      max-height: 90px;
-      width: auto;
-      object-fit: contain;
-      filter: drop-shadow(0 2px 8px rgba(0,0,0,0.06));
-    }
-    /* Fallback text logo if image doesn't load */
+    .hero-logo { display: flex; align-items: center; justify-content: center; margin-bottom: 24px; }
+    .hero-logo img { max-height: 90px; width: auto; object-fit: contain; filter: drop-shadow(0 2px 8px rgba(0,0,0,0.06)); }
     .hero-logo-fallback {
-      display: none;
-      align-items: center;
-      gap: 10px;
-      background: rgba(255,255,255,0.75);
-      backdrop-filter: blur(8px);
-      padding: 10px 24px;
-      border-radius: 50px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+      display: none; align-items: center; gap: 10px;
+      background: rgba(255,255,255,0.75); backdrop-filter: blur(8px);
+      padding: 10px 24px; border-radius: 50px; box-shadow: 0 2px 10px rgba(0,0,0,0.04);
     }
     .hero-logo-fallback .icon { font-size: 1.5rem; }
-    .hero-logo-fallback .name {
-      font-weight: 700;
-      letter-spacing: 0.5px;
-      color: #ec4899;
-      font-size: 1.15rem;
-    }
+    .hero-logo-fallback .name { font-weight: 700; letter-spacing: 0.5px; color: #ec4899; font-size: 1.15rem; }
 
-    .hero h1 {
-      font-size: clamp(2rem, 5vw, 3.2rem);
-      font-weight: 700;
-      line-height: 1.15;
-      margin-bottom: 20px;
-      color: #1f2937;
-    }
-    .hero p.hero-subtitle {
-      font-size: clamp(1rem, 2.2vw, 1.12rem);
-      color: #9ca3af;
-      max-width: 540px;
-      margin: 0 auto 32px;
-    }
+    .hero h1 { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 700; line-height: 1.15; margin-bottom: 20px; color: #1f2937; }
+    .hero p.hero-subtitle { font-size: clamp(1rem, 2.2vw, 1.12rem); color: #9ca3af; max-width: 540px; margin: 0 auto 32px; }
     .hero p.hero-subtitle strong.pink { color: #ec4899; }
     .hero p.hero-subtitle strong.purple { color: #a78bfa; }
 
     .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: linear-gradient(135deg, #f9a8d4, #ec4899);
-      color: #fff;
-      font-weight: 600;
-      font-size: 1.05rem;
-      padding: 16px 36px;
-      border-radius: 50px;
-      box-shadow: 0 8px 24px rgba(236,72,153,0.3);
-      transition: transform 0.3s, box-shadow 0.3s;
+      display: inline-flex; align-items: center; gap: 10px;
+      background: linear-gradient(135deg, #f9a8d4, #ec4899); color: #fff;
+      font-weight: 600; font-size: 1.05rem; padding: 16px 36px; border-radius: 50px;
+      box-shadow: 0 8px 24px rgba(236,72,153,0.3); transition: transform 0.3s, box-shadow 0.3s;
     }
-    .btn-primary:hover {
-      transform: scale(1.05);
-      box-shadow: 0 12px 32px rgba(236,72,153,0.4);
-    }
+    .btn-primary:hover { transform: scale(1.05); box-shadow: 0 12px 32px rgba(236,72,153,0.4); }
     .btn-primary svg { transition: transform 0.3s; }
     .btn-primary:hover svg { transform: translateY(3px); }
 
-    .trust-badges {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 24px;
-      margin-top: 40px;
-      font-size: 0.88rem;
-      color: #9ca3af;
-    }
+    .trust-badges { display: flex; flex-wrap: wrap; justify-content: center; gap: 24px; margin-top: 40px; font-size: 0.88rem; color: #9ca3af; }
     .trust-badges > div { display: flex; align-items: center; gap: 8px; }
 
-    /* ===== CATALOG SECTION ===== */
-    .catalog {
-      background: linear-gradient(180deg, #fff 0%, rgba(253,242,248,0.3) 50%, #fff 100%);
-      padding: 70px 0 80px;
-    }
-    .section-badge {
-      display: inline-block;
-      background: #fce7f3;
-      color: #ec4899;
-      font-size: 0.85rem;
-      font-weight: 500;
-      padding: 6px 18px;
-      border-radius: 50px;
-      margin-bottom: 12px;
-    }
-    .catalog h2 {
-      font-size: clamp(1.6rem, 4vw, 2.2rem);
-      font-weight: 700;
-      color: #1f2937;
-      margin-bottom: 12px;
-    }
-    .catalog > .container > p {
-      color: #9ca3af;
-      max-width: 520px;
-      margin: 0 auto 48px;
-    }
+    /* ===== CATALOG ===== */
+    .catalog { background: linear-gradient(180deg, #fff 0%, rgba(253,242,248,0.3) 50%, #fff 100%); padding: 70px 0 80px; }
+    .section-badge { display: inline-block; background: #fce7f3; color: #ec4899; font-size: 0.85rem; font-weight: 500; padding: 6px 18px; border-radius: 50px; margin-bottom: 12px; }
+    .catalog h2 { font-size: clamp(1.6rem, 4vw, 2.2rem); font-weight: 700; color: #1f2937; margin-bottom: 12px; }
+    .catalog > .container > p { color: #9ca3af; max-width: 520px; margin: 0 auto 48px; }
 
-    /* Step indicators */
-    .step-header {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 20px;
-    }
-    .step-number {
-      width: 32px;
-      height: 32px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-      color: #fff;
-      font-size: 0.85rem;
-      font-weight: 700;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
+    .step-header { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+    .step-number { width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 50%; color: #fff; font-size: 0.85rem; font-weight: 700; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
     .step-number.pink { background: linear-gradient(135deg, #f9a8d4, #ec4899); }
     .step-number.purple { background: linear-gradient(135deg, #f9a8d4, #db2777); }
     .step-header h3 { font-size: 1.1rem; font-weight: 600; color: #374151; }
     .step-header h3 span { font-weight: 400; color: #9ca3af; font-size: 0.9rem; margin-left: 6px; }
 
     /* ===== PRODUCT CARDS ===== */
-    .products-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 16px;
-      margin-bottom: 56px;
-    }
-    @media (min-width: 768px) { .products-grid { grid-template-columns: repeat(4, 1fr); gap: 20px; } }
+    .products-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-bottom: 56px; }
+    @media (min-width: 600px) { .products-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (min-width: 900px) { .products-grid { grid-template-columns: repeat(5, 1fr); gap: 20px; } }
 
     .product-card {
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      background: rgba(255,255,255,0.85);
-      border: 2px solid #fce7f3;
-      border-radius: 24px;
-      padding: 24px 16px;
-      transition: all 0.3s ease;
-      outline: none;
+      position: relative; display: flex; flex-direction: column; align-items: center;
+      background: rgba(255,255,255,0.85); border: 2px solid #fce7f3; border-radius: 24px;
+      padding: 24px 14px; transition: all 0.3s ease; outline: none;
     }
-    .product-card:hover {
-      transform: translateY(-4px);
-      border-color: #f9a8d4;
-      box-shadow: 0 12px 32px rgba(236,72,153,0.12);
-    }
-    .product-card.selected {
-      border-color: #ec4899;
-      background: #fff;
-      box-shadow: 0 12px 36px rgba(236,72,153,0.18);
-      transform: scale(1.03);
-    }
-    .product-card:focus-visible {
-      outline: 2px solid #ec4899;
-      outline-offset: 2px;
-    }
+    .product-card:hover { transform: translateY(-4px); border-color: #f9a8d4; box-shadow: 0 12px 32px rgba(236,72,153,0.12); }
+    .product-card.selected { border-color: #ec4899; background: #fff; box-shadow: 0 12px 36px rgba(236,72,153,0.18); transform: scale(1.03); }
+    .product-card:focus-visible { outline: 2px solid #ec4899; outline-offset: 2px; }
 
     .product-check {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      width: 26px;
-      height: 26px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #f9a8d4, #ec4899);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 4px 10px rgba(236,72,153,0.3);
-      opacity: 0;
-      transform: scale(0.6);
-      transition: all 0.3s;
+      position: absolute; top: 10px; right: 10px; width: 26px; height: 26px; border-radius: 50%;
+      background: linear-gradient(135deg, #f9a8d4, #ec4899); display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 10px rgba(236,72,153,0.3); opacity: 0; transform: scale(0.6); transition: all 0.3s;
     }
     .product-card.selected .product-check { opacity: 1; transform: scale(1); }
 
     .product-icon {
-      width: 76px;
-      height: 76px;
-      border-radius: 18px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 14px;
-      transition: transform 0.3s;
-      overflow: hidden;
+      width: 76px; height: 76px; border-radius: 18px; display: flex; align-items: center; justify-content: center;
+      margin-bottom: 14px; transition: transform 0.3s; overflow: hidden;
     }
-    .product-icon img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 18px;
-    }
-    .product-card:hover .product-icon,
-    .product-card.selected .product-icon { transform: scale(1.1); }
+    .product-icon img { width: 100%; height: 100%; object-fit: cover; border-radius: 18px; }
+    .product-card:hover .product-icon, .product-card.selected .product-icon { transform: scale(1.1); }
 
-    .product-card h4 {
-      font-size: 0.95rem;
-      font-weight: 700;
-      color: #374151;
-      margin-bottom: 4px;
-    }
-    @media (min-width: 768px) { .product-card h4 { font-size: 1.05rem; } }
-    .product-card .desc {
-      font-size: 0.78rem;
-      color: #9ca3af;
-      text-align: center;
-      margin-bottom: 10px;
-      line-height: 1.5;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-    }
-    .product-price {
-      background: linear-gradient(135deg, #fdf2f8, #fce7f3);
-      padding: 5px 16px;
-      border-radius: 50px;
-      font-size: 0.88rem;
-      font-weight: 700;
-      color: #db2777;
-    }
-    .product-prints-count {
-      margin-top: 10px;
-      font-size: 0.75rem;
-      color: #9ca3af;
-      display: flex;
-      align-items: center;
-      gap: 4px;
-    }
+    .product-card h4 { font-size: 0.9rem; font-weight: 700; color: #374151; margin-bottom: 4px; text-align: center; }
+    @media (min-width: 768px) { .product-card h4 { font-size: 1rem; } }
+    .product-card .desc { font-size: 0.75rem; color: #9ca3af; text-align: center; margin-bottom: 10px; line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .product-price { background: linear-gradient(135deg, #fdf2f8, #fce7f3); padding: 5px 14px; border-radius: 50px; font-size: 0.85rem; font-weight: 700; color: #db2777; }
+    .product-prints-count { margin-top: 10px; font-size: 0.75rem; color: #9ca3af; display: flex; align-items: center; gap: 4px; }
 
-    /* ===== SELECTED PRODUCT INFO BAR ===== */
-    .selected-info {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      background: linear-gradient(135deg, #fdf2f8, #fce7f3);
-      border-radius: 18px;
-      padding: 16px 20px;
-      margin-bottom: 20px;
-    }
+    /* ===== SELECTED INFO BAR ===== */
+    .selected-info { display: flex; align-items: center; gap: 12px; background: linear-gradient(135deg, #fdf2f8, #fce7f3); border-radius: 18px; padding: 16px 20px; margin-bottom: 20px; }
     .selected-info-icon { font-size: 1.6rem; }
     .selected-info-icon img { width: 40px; height: 40px; border-radius: 10px; object-fit: cover; }
     .selected-info strong { font-size: 0.9rem; color: #374151; display: block; }
     .selected-info small { font-size: 0.78rem; color: #9ca3af; }
 
     /* ===== PRINT CARDS ===== */
-    .prints-grid {
-      display: grid;
-      gap: 16px;
-      grid-template-columns: 1fr;
-    }
+    .prints-grid { display: grid; gap: 16px; grid-template-columns: 1fr; }
     @media (min-width: 560px) { .prints-grid { grid-template-columns: repeat(2, 1fr); } }
     @media (min-width: 768px) { .prints-grid { grid-template-columns: repeat(3, 1fr); } }
     .prints-grid.single { max-width: 380px; margin: 0 auto; grid-template-columns: 1fr; }
 
     .print-card {
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-      border-radius: 20px;
-      border: 2px solid #fce7f3;
-      background: #fff;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-      transition: all 0.3s;
-      outline: none;
+      position: relative; display: flex; flex-direction: column; overflow: hidden;
+      border-radius: 20px; border: 2px solid #fce7f3; background: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04); transition: all 0.3s; outline: none;
       animation: fadeIn 0.4s ease-out backwards;
     }
     .print-card:nth-child(2) { animation-delay: 0.08s; }
     .print-card:nth-child(3) { animation-delay: 0.16s; }
-    .print-card:hover {
-      transform: translateY(-5px);
-      border-color: #f9a8d4;
-      box-shadow: 0 12px 32px rgba(236,72,153,0.15);
-    }
-    .print-card:focus-visible {
-      outline: 2px solid #ec4899;
-      outline-offset: 2px;
-    }
+    .print-card:hover { transform: translateY(-5px); border-color: #f9a8d4; box-shadow: 0 12px 32px rgba(236,72,153,0.15); }
+    .print-card:focus-visible { outline: 2px solid #ec4899; outline-offset: 2px; }
 
     .print-preview {
-      position: relative;
-      height: 180px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
+      position: relative; aspect-ratio: 3 / 4; display: flex; align-items: center;
+      justify-content: center; overflow: hidden;
     }
-    .print-preview img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.4s;
-    }
-    .print-card:hover .print-preview img { transform: scale(1.08); }
+    .print-preview img { width: 100%; height: 100%; object-fit: cover; object-position: top center; transition: transform 0.4s; }
+    .print-card:hover .print-preview img { transform: scale(1.05); }
 
     .print-pattern-overlay {
-      position: absolute;
-      inset: 0;
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      grid-template-rows: repeat(4, 1fr);
-      place-items: center;
-      opacity: 0.1;
-      font-size: 1.1rem;
-      pointer-events: none;
+      position: absolute; inset: 0; display: grid; grid-template-columns: repeat(5, 1fr);
+      grid-template-rows: repeat(4, 1fr); place-items: center; opacity: 0.1; font-size: 1.1rem; pointer-events: none;
     }
-
     .print-emoji-center {
-      position: absolute;
-      font-size: 3.4rem;
-      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.15));
-      transition: transform 0.3s;
-      z-index: 2;
+      position: absolute; font-size: 3.4rem; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.15));
+      transition: transform 0.3s, opacity 0.3s; z-index: 2;
     }
-    .print-card:hover .print-emoji-center { transform: scale(1.25); }
+    .print-preview.has-image .print-emoji-center,
+    .print-preview.has-image .print-pattern-overlay { display: none; }
 
-    .print-hover-label {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 3;
-      background: rgba(255,255,255,0);
-      transition: background 0.3s;
-    }
+    .print-hover-label { position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%); z-index: 3; }
     .print-hover-label span {
-      background: rgba(255,255,255,0.92);
-      padding: 8px 18px;
-      border-radius: 50px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: #db2777;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      opacity: 0;
-      transform: translateY(12px);
-      transition: all 0.3s;
+      background: rgba(255,255,255,0.92); padding: 8px 18px; border-radius: 50px;
+      font-size: 0.85rem; font-weight: 600; color: #db2777; box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      opacity: 0; transform: translateY(12px); transition: all 0.3s; white-space: nowrap;
     }
-    .print-card:hover .print-hover-label { background: rgba(255,255,255,0.18); }
     .print-card:hover .print-hover-label span { opacity: 1; transform: translateY(0); }
 
-    .print-info {
-      padding: 14px 16px;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-    }
-    .print-info h4 {
-      font-size: 0.95rem;
-      font-weight: 700;
-      color: #374151;
-      margin-bottom: 4px;
-    }
-    .print-info p {
-      font-size: 0.82rem;
-      color: #9ca3af;
-      line-height: 1.5;
+    .print-info { padding: 14px 16px; flex: 1; display: flex; flex-direction: column; }
+    .print-info h4 { font-size: 0.95rem; font-weight: 700; color: #374151; margin-bottom: 4px; }
+    .print-info p { font-size: 0.82rem; color: #9ca3af; line-height: 1.5; }
+    /* Tags de tamanho dentro do card de estampa */
+    .print-sizes { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+    .print-size-tag {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-width: 32px; padding: 3px 10px; border-radius: 50px;
+      background: linear-gradient(135deg, #fdf2f8, #fce7f3);
+      font-size: 0.75rem; font-weight: 700; color: #db2777;
     }
 
-    .prints-hint {
-      text-align: center;
-      font-size: 0.85rem;
-      color: #d1d5db;
-      margin-top: 24px;
-    }
+    .prints-hint { text-align: center; font-size: 0.85rem; color: #d1d5db; margin-top: 24px; }
 
     /* ===== FOOTER ===== */
-    .site-footer {
-      background: linear-gradient(180deg, #fff, #fdf2f8);
-      padding: 60px 0 40px;
-    }
-    .footer-feature-single {
-      max-width: 420px;
-      margin: 0 auto 40px;
-      background: #fff;
-      border-radius: 20px;
-      padding: 28px 24px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.04);
-      text-align: center;
-    }
+    .site-footer { background: linear-gradient(180deg, #fff, #fdf2f8); padding: 60px 0 40px; }
+    .footer-feature-single { max-width: 420px; margin: 0 auto 40px; background: #fff; border-radius: 20px; padding: 28px 24px; box-shadow: 0 2px 10px rgba(0,0,0,0.04); text-align: center; }
     .footer-feature-single .icon { font-size: 1.8rem; margin-bottom: 12px; display: block; }
     .footer-feature-single h4 { font-weight: 600; color: #374151; margin-bottom: 6px; }
     .footer-feature-single p { font-size: 0.85rem; color: #9ca3af; }
-
-    .footer-brand {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      margin-bottom: 8px;
-    }
-    .footer-brand img {
-      max-height: 40px;
-      width: auto;
-      object-fit: contain;
-    }
+    .footer-brand { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 8px; }
+    .footer-brand img { max-height: 40px; width: auto; object-fit: contain; }
     .footer-brand .icon { font-size: 1.4rem; }
     .footer-brand .name { font-weight: 700; letter-spacing: 0.5px; color: #ec4899; font-size: 1.15rem; }
     .footer-tagline { font-size: 0.88rem; color: #9ca3af; margin-bottom: 6px; }
     .footer-location { font-size: 0.82rem; color: #d1d5db; margin-bottom: 28px; }
-    .footer-bottom {
-      border-top: 1px solid #fce7f3;
-      padding-top: 20px;
-      font-size: 0.75rem;
-      color: #d1d5db;
-      text-align: center;
-    }
+    .footer-bottom { border-top: 1px solid #fce7f3; padding-top: 20px; font-size: 0.75rem; color: #d1d5db; text-align: center; }
 
     /* ===== MODAL ===== */
     .modal-overlay {
-      position: fixed;
-      inset: 0;
-      z-index: 100;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 16px;
-      visibility: hidden;
-      opacity: 0;
+      position: fixed; inset: 0; z-index: 100;
+      display: flex; align-items: flex-end; justify-content: center;
+      padding: 0; visibility: hidden; opacity: 0;
       transition: visibility 0s 0.3s, opacity 0.3s;
     }
-    .modal-overlay.open {
-      visibility: visible;
-      opacity: 1;
-      transition: visibility 0s, opacity 0.3s;
-    }
-    .modal-backdrop {
-      position: absolute;
-      inset: 0;
-      background: rgba(0,0,0,0.4);
-      backdrop-filter: blur(4px);
-    }
+    @media (min-width: 560px) { .modal-overlay { align-items: center; padding: 16px; } }
+    .modal-overlay.open { visibility: visible; opacity: 1; transition: visibility 0s, opacity 0.3s; }
+    .modal-backdrop { position: absolute; inset: 0; background: rgba(0,0,0,0.4); backdrop-filter: blur(4px); }
+
     .modal-box {
-      position: relative;
-      width: 100%;
-      max-width: 420px;
-      background: #fff;
-      border-radius: 28px;
-      overflow: hidden;
-      box-shadow: 0 24px 64px rgba(0,0,0,0.18);
-      animation: modalIn 0.35s ease-out;
+      position: relative; width: 100%; max-width: 420px; max-height: 92vh;
+      background: #fff; border-radius: 28px 28px 0 0;
+      overflow-y: auto; overflow-x: hidden;
+      box-shadow: 0 -8px 64px rgba(0,0,0,0.18);
+      animation: modalSlideUp 0.35s ease-out;
     }
+    @media (min-width: 560px) {
+      .modal-box {
+        border-radius: 28px; max-height: 85vh;
+        box-shadow: 0 24px 64px rgba(0,0,0,0.18);
+        animation: modalIn 0.35s ease-out;
+      }
+    }
+
     .modal-close {
-      position: absolute;
-      top: 14px;
-      right: 14px;
-      z-index: 10;
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.85);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #9ca3af;
+      position: sticky; top: 12px; float: right; margin-right: 14px; margin-top: 12px;
+      z-index: 10; width: 36px; height: 36px; border-radius: 50%;
+      background: rgba(255,255,255,0.9); backdrop-filter: blur(8px);
+      display: flex; align-items: center; justify-content: center;
+      color: #6b7280; box-shadow: 0 2px 8px rgba(0,0,0,0.1);
       transition: background 0.2s, color 0.2s;
     }
-    .modal-close:hover { background: #f3f4f6; color: #4b5563; }
+    .modal-close:hover { background: #f3f4f6; color: #1f2937; }
 
     .modal-header {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 32px 24px 24px;
+      display: flex; flex-direction: column; align-items: center;
+      padding: 0; position: relative; margin-top: -48px;
     }
     .modal-header-img {
-      width: 100%;
-      height: 120px;
-      object-fit: cover;
-      border-radius: 16px;
-      margin-bottom: 12px;
+      width: 100%; aspect-ratio: 4 / 5; max-height: 360px;
+      object-fit: cover; object-position: center center;
     }
-    .modal-header .emoji { font-size: 3.4rem; margin-bottom: 12px; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1)); }
-    .modal-header .tag {
-      background: rgba(255,255,255,0.8);
-      backdrop-filter: blur(6px);
-      padding: 5px 16px;
-      border-radius: 50px;
-      font-size: 0.82rem;
-      font-weight: 500;
-      color: #4b5563;
+    .modal-header-tag {
+      position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%);
+      background: rgba(255,255,255,0.92); backdrop-filter: blur(6px);
+      padding: 6px 18px; border-radius: 50px; font-size: 0.82rem; font-weight: 600;
+      color: #4b5563; box-shadow: 0 2px 10px rgba(0,0,0,0.08); white-space: nowrap;
     }
+    .modal-header-fallback {
+      width: 100%; padding: 40px 24px 28px;
+      display: flex; flex-direction: column; align-items: center;
+    }
+    .modal-header-fallback .emoji { font-size: 3rem; margin-bottom: 12px; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1)); }
 
     .modal-body { padding: 24px 24px 32px; }
-    .modal-body h3 {
-      text-align: center;
-      font-size: 1.2rem;
-      font-weight: 700;
-      color: #1f2937;
-      margin-bottom: 4px;
-    }
-    .modal-body .subtitle {
-      text-align: center;
-      font-size: 0.85rem;
-      color: #9ca3af;
-      margin-bottom: 24px;
-    }
+    .modal-body h3 { text-align: center; font-size: 1.2rem; font-weight: 700; color: #1f2937; margin-bottom: 4px; }
+    .modal-body .subtitle { text-align: center; font-size: 0.85rem; color: #9ca3af; margin-bottom: 24px; }
 
-    .modal-summary {
-      background: linear-gradient(135deg, #fdf2f8, #fce7f3);
-      border-radius: 18px;
-      padding: 18px 20px;
-      margin-bottom: 24px;
-    }
-    .modal-summary .row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      font-size: 0.88rem;
-      padding: 4px 0;
-    }
+    .modal-summary { background: linear-gradient(135deg, #fdf2f8, #fce7f3); border-radius: 18px; padding: 18px 20px; margin-bottom: 24px; }
+    .modal-summary .row { display: flex; align-items: center; justify-content: space-between; font-size: 0.88rem; padding: 4px 0; }
     .modal-summary .row .label { color: #9ca3af; }
     .modal-summary .row .value { font-weight: 600; color: #374151; }
-    .modal-summary .divider {
-      border: none;
-      border-top: 1px solid rgba(236,72,153,0.2);
-      margin: 10px 0;
-    }
+    .modal-summary .divider { border: none; border-top: 1px solid rgba(236,72,153,0.2); margin: 10px 0; }
     .modal-summary .row.price .value { font-size: 1.1rem; font-weight: 700; color: #db2777; }
+    /* Tamanhos no modal */
+    .modal-sizes { display: flex; flex-wrap: wrap; gap: 6px; }
+    .modal-size-tag {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-width: 36px; padding: 4px 12px; border-radius: 50px;
+      background: #fff; border: 1.5px solid #f9a8d4;
+      font-size: 0.82rem; font-weight: 700; color: #db2777;
+    }
 
     .btn-whatsapp {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      width: 100%;
-      background: linear-gradient(135deg, #22c55e, #10b981);
-      color: #fff;
-      font-size: 1.08rem;
-      font-weight: 700;
-      padding: 16px 24px;
-      border-radius: 18px;
-      box-shadow: 0 8px 24px rgba(34,197,94,0.3);
-      transition: transform 0.3s, box-shadow 0.3s;
+      display: flex; align-items: center; justify-content: center; gap: 12px; width: 100%;
+      background: linear-gradient(135deg, #22c55e, #10b981); color: #fff;
+      font-size: 1.08rem; font-weight: 700; padding: 16px 24px; border-radius: 18px;
+      box-shadow: 0 8px 24px rgba(34,197,94,0.3); transition: transform 0.3s, box-shadow 0.3s;
     }
-    .btn-whatsapp:hover {
-      transform: scale(1.02);
-      box-shadow: 0 12px 32px rgba(34,197,94,0.4);
-    }
+    .btn-whatsapp:hover { transform: scale(1.02); box-shadow: 0 12px 32px rgba(34,197,94,0.4); }
     .btn-whatsapp svg { width: 24px; height: 24px; }
 
     .btn-back {
-      width: 100%;
-      padding: 12px;
-      margin-top: 10px;
-      font-size: 0.85rem;
-      font-weight: 500;
-      color: #9ca3af;
-      border-radius: 18px;
-      transition: background 0.2s, color 0.2s;
+      width: 100%; padding: 12px; margin-top: 10px; font-size: 0.85rem; font-weight: 500;
+      color: #9ca3af; border-radius: 18px; transition: background 0.2s, color 0.2s;
     }
     .btn-back:hover { background: #f9fafb; color: #4b5563; }
   </style>
 </head>
 <body>
 
-  <!-- ==================== HERO ==================== -->
+  <!-- HERO -->
   <section class="hero">
     <div class="hero-blob hero-blob-1"></div>
     <div class="hero-blob hero-blob-2"></div>
     <div class="hero-blob hero-blob-3"></div>
-
     <div class="hero-content">
-
-      <!-- ===== LOGO: troque "logo.png" pelo nome real do arquivo de logo ===== -->
       <div class="hero-logo">
-        <img
-          src="logo.png"
-          alt="Flor de Algodão — Logo"
-          id="heroLogoImg"
-          onerror="this.style.display='none'; document.getElementById('heroLogoFallback').style.display='flex';"
-        />
+        <img src="logo.svg" alt="Flor de Algodão — Logo" id="heroLogoImg"
+          onerror="this.style.display='none'; document.getElementById('heroLogoFallback').style.display='flex';" />
         <div class="hero-logo-fallback" id="heroLogoFallback">
           <span class="icon">🌸</span>
           <span class="name serif">Flor de Algodão</span>
         </div>
       </div>
-
       <h1 class="serif">Moda Infantil <span class="gradient-text">com Amor</span></h1>
       <p class="hero-subtitle">Peças encantadoras para as pequenas princesas de <strong class="pink">Rio Verde</strong>. Cada detalhe pensado com carinho para trazer <strong class="pink">conforto</strong> e <strong class="purple">estilo</strong> ao dia a dia das meninas.</p>
-
       <a href="#catalogo" class="btn-primary">
         Ver Coleção
         <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
           <path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
         </svg>
       </a>
-
       <div class="trust-badges">
         <div><span style="font-size:1.1rem;">📍</span><span>Rio Verde — GO</span></div>
         <div><span style="font-size:1.1rem;">💬</span><span>Vendas pelo WhatsApp</span></div>
@@ -669,68 +332,52 @@
     </div>
   </section>
 
-  <!-- ==================== CATALOG ==================== -->
+  <!-- CATALOG -->
   <section class="catalog" id="catalogo">
     <div class="container">
       <div class="text-center">
         <span class="section-badge">✨ Nossa Coleção</span>
         <h2 class="serif">Escolha a peça perfeita</h2>
-        <p>Selecione uma peça abaixo e descubra as estampas disponíveis. Depois, é só clicar na sua favorita!</p>
+        <p>Selecione uma peça abaixo e descubra as estampas disponíveis com os tamanhos em estoque!</p>
       </div>
-
-      <!-- Step 1 -->
       <div class="step-header">
         <span class="step-number pink">1</span>
         <h3>Escolha a peça</h3>
       </div>
-
       <div class="products-grid" id="productsGrid"></div>
-
-      <!-- Step 2 -->
       <div class="step-header">
         <span class="step-number purple">2</span>
         <h3 id="step2Title">Escolha a estampa</h3>
       </div>
-
       <div class="selected-info" id="selectedInfo"></div>
-
       <div id="printsGrid"></div>
-
       <p class="prints-hint">👆 Clique na estampa desejada para fazer seu pedido via WhatsApp</p>
     </div>
   </section>
 
-  <!-- ==================== FOOTER ==================== -->
+  <!-- FOOTER -->
   <footer class="site-footer">
     <div class="container">
-
       <div class="footer-feature-single">
         <span class="icon">💬</span>
         <h4>Atendimento Pessoal</h4>
         <p>Tire suas dúvidas e faça seu pedido diretamente pelo WhatsApp. Atendemos com carinho em Rio Verde e região!</p>
       </div>
-
       <div class="text-center">
         <div class="footer-brand">
-          <img
-            src="logo.png"
-            alt="Flor de Algodão"
-            style="max-height:36px;"
-            onerror="this.style.display='none'; this.nextElementSibling.style.display='inline'; this.nextElementSibling.nextElementSibling.style.display='inline';"
-          />
+          <img src="logo.svg" alt="Flor de Algodão" style="max-height:36px;"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='inline'; this.nextElementSibling.nextElementSibling.style.display='inline';" />
           <span class="icon" style="display:none;">🌸</span>
           <span class="name serif">Flor de Algodão</span>
         </div>
         <p class="footer-tagline">Vestindo sonhos, encantando sorrisos ✨</p>
         <p class="footer-location">📍 Rio Verde — Goiás</p>
-        <div class="footer-bottom">
-          © <span id="footerYear"></span> Flor de Algodão — Moda Infantil Feminina. Todos os direitos reservados.
-        </div>
+        <div class="footer-bottom">© <span id="footerYear"></span> Flor de Algodão — Moda Infantil Feminina. Todos os direitos reservados.</div>
       </div>
     </div>
   </footer>
 
-  <!-- ==================== MODAL ==================== -->
+  <!-- MODAL -->
   <div class="modal-overlay" id="modal">
     <div class="modal-backdrop" id="modalBackdrop"></div>
     <div class="modal-box">
@@ -739,179 +386,147 @@
           <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
         </svg>
       </button>
-
-      <div class="modal-header" id="modalHeader">
-        <!-- Dynamic content -->
-      </div>
-
+      <div class="modal-header" id="modalHeader"></div>
       <div class="modal-body">
         <h3>Adorou essa peça? 💕</h3>
         <p class="subtitle">Confirme sua escolha e fale conosco pelo WhatsApp</p>
-
-        <div class="modal-summary" id="modalSummary">
-          <!-- Dynamic content -->
-        </div>
-
+        <div class="modal-summary" id="modalSummary"></div>
         <a href="#" class="btn-whatsapp" id="whatsappLink" target="_blank" rel="noopener noreferrer">
           <svg viewBox="0 0 24 24" fill="currentColor">
             <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
           </svg>
           <span>Chamar no WhatsApp</span>
         </a>
-
         <button class="btn-back" id="modalBack">Voltar e ver outras opções</button>
       </div>
     </div>
   </div>
 
-  <!-- ==================== JAVASCRIPT ==================== -->
   <script>
-    /* ===== CONFIGURAÇÃO =====
-       Substitua pelo seu número de WhatsApp real.
-       Formato: código do país + DDD + número, sem espaços nem símbolos.
-       Exemplo para (64) 99999-9999: "5564999999999"
-    */
     var WHATSAPP_NUMBER = "550064992508144";
 
-    /* ===== DADOS DOS PRODUTOS =====
-       As imagens devem estar na MESMA PASTA do index.html.
-       Se o arquivo não existir, um fallback com gradient + emoji será exibido automaticamente.
-    */
     var products = [
       {
-        id: "vestido",
-        name: "Vestido",
-        description: "Vestido delicados. Perfeito para passeios e festinhas.",
-        price: "R$ 69,90",
-        sizes: "2 a 10 anos",
-        emoji: "👗",
-        thumb: "vestido-thumb.jpg",
+        id: "vestido-bolsinha",
+        name: "Vestido + Bolsinha",
+        description: "O lookinho completo! Vestido rodado que acompanha uma bolsinha combinando para guardar os tesouros das pequenas!",
+        price: "R$ 84,90",
+        emoji: "👗👜",
+        thumb: "vestido-bolsinha-thumb.jpg",
         colors: ["#FECDD3", "#FDA4AF", "#FB7185"],
         prints: [
           {
-            id: "vestido-floral",
-            name: "Floral Primavera",
-            emoji: "🌸",
-            colors: ["#FECDD3", "#FDA4AF", "#FB7185"],
-            description: "Estampa com flores delicadas em tons coloridos",
-            image: "vestido-floral.jpeg"
+            id: "vb-amigos-bosque",
+            name: "Amigos do Bosque",
+            emoji: "🦊",
+            colors: ["#D9F99D", "#BEF264", "#A3E635"],
+            description: "Estampa com bichinhos fofos do bosque",
+            image: "luxo-amigos-do-bosque.jpeg",
+            sizes: ["6", "8"]
           },
           {
-            id: "vestido-lacinhos",
-            name: "Laços",
-            emoji: "🎀",
+            id: "vb-castelo-encantado",
+            name: "Castelo Encantado",
+            emoji: "🏰",
             colors: ["#C4B5FD", "#A78BFA", "#8B5CF6"],
-            description: "Estampas de laços com fundo azul",
-            image: "vestido-lacinhos.jpeg"
-          },
-          {
-            id: "vestido-frutinhas",
-            name: "Salada de Frutas",
-            emoji: "🍎",
-            colors: ["#FBCFE8", "#F9A8D4", "#F472B6"],
-            description: "Vestido com estampas de frutas",
-            image: "vestido-frutinhas.jpeg"
+            description: "Estampa com castelos e elementos de conto de fadas",
+            image: "luxo-castelo-encantado.jpeg",
+            sizes: ["6"]
           }
         ]
       },
       {
-        id: "conjunto",
-        name: "Conjunto Alegria",
-        description: "Blusa + short confortável com elástico na cintura. Ideal para o dia a dia.",
-        price: "R$ 79,90",
-        sizes: "1 a 6 anos",
-        emoji: "👚",
-        thumb: "conjunto-thumb.jpg",
-        colors: ["#FCA5A5", "#F87171", "#EF4444"],
+        id: "vestido",
+        name: "Vestido",
+        description: "Vestidos soltinhos, confortáveis e cheios de cor 🌈 Perfeitos para acompanhar cada fase da infância com leveza.",
+        price: "R$ 69,90",
+        emoji: "👗",
+        thumb: "vestido-thumb.jpg",
+        colors: ["#FED7AA", "#FDBA74", "#FB923C"],
         prints: [
           {
-            id: "conjunto-cereja",
-            name: "Cerejas Doces",
-            emoji: "🍒",
-            colors: ["#FCA5A5", "#F87171", "#EF4444"],
-            description: "Estampa de cerejas vermelhas com folhinhas verdes",
-            image: "conjunto-cereja.jpg"
-          },
-          {
-            id: "conjunto-margaridas",
-            name: "Margaridas do Campo",
-            emoji: "🌼",
+            id: "v-colheita-feliz",
+            name: "Colheita Feliz",
+            emoji: "🌻",
             colors: ["#FDE68A", "#FCD34D", "#FBBF24"],
-            description: "Margaridas brancas e amarelas em fundo delicado",
-            image: "conjunto-margaridas.jpg"
-          },
-          {
-            id: "conjunto-coracoes",
-            name: "Chuva de Corações",
-            emoji: "💕",
-            colors: ["#FECDD3", "#FDA4AF", "#FB7185"],
-            description: "Corações em tons de rosa e vermelho espalhados",
-            image: "conjunto-coracoes.jpg"
+            description: "Estampa com frutas e flores da colheita",
+            image: "vestido-colheita-feliz.jpeg",
+            sizes: ["4", "6", "8", "10"]
           }
         ]
       },
       {
-        id: "saia",
-        name: "Saia Bailarina",
-        description: "Saia rodada com camadas de tule e forro macio. Para as pequenas dançarinas!",
-        price: "R$ 59,90",
-        sizes: "2 a 8 anos",
-        emoji: "💃",
-        thumb: "saia-thumb.jpg",
-        colors: ["#E0E7FF", "#C7D2FE", "#A5B4FC"],
+        id: "conjuntinho-verao",
+        name: "Conjuntinho de Verão",
+        description: "Blusa + short fresquinho, ideal para os dias quentes de verão.",
+        price: "R$ 75,90",
+        emoji: "☀️",
+        thumb: "conjuntinho-verao-thumb.jpg",
+        colors: ["#FBCFE8", "#F9A8D4", "#F472B6"],
         prints: [
           {
-            id: "saia-estrelas",
-            name: "Estrelas Brilhantes",
-            emoji: "⭐",
-            colors: ["#E0E7FF", "#C7D2FE", "#A5B4FC"],
-            description: "Estrelinhas douradas sobre tule lilás",
-            image: "saia-estrelas.jpg"
+            id: "cv-carinha-gato",
+            name: "Carinha de Gato",
+            emoji: "🐱",
+            colors: ["#FBCFE8", "#F9A8D4", "#F472B6"],
+            description: "Estampa com carinhas de gatinhos fofos",
+            image: "conjuntinho-carinha-de-gato.jpeg",
+            sizes: ["2", "4", "6", "8"]
           },
           {
-            id: "saia-arcoiris",
-            name: "Arco-Íris Candy",
-            emoji: "🌈",
+            id: "cv-multiflor",
+            name: "Multiflor",
+            emoji: "🌺",
+            colors: ["#FECDD3", "#FDA4AF", "#FB7185"],
+            description: "Estampa com flores coloridas e alegres",
+            image: "conjuntinho-multiflor.jpeg",
+            sizes: ["2", "4", "6", "8", "10"]
+          }
+        ]
+      },
+      {
+        id: "conjunto-tropical",
+        name: "Conjunto Tropical Longo",
+        description: "Proteção e estilo para os dias mais fresquinhos. Tecido macio que abraça! 🧥",
+        price: "R$ 89,90",
+        emoji: "🌴",
+        thumb: "conjunto-tropical-thumb.jpg",
+        colors: ["#A7F3D0", "#6EE7B7", "#34D399"],
+        prints: [
+          {
+            id: "ct-doce-listra",
+            name: "Doce Listra",
+            emoji: "🍬",
             colors: ["#FBCFE8", "#DDD6FE", "#BAE6FD"],
-            description: "Listras em tons candy de arco-íris pastel",
-            image: "saia-arcoiris.jpg"
-          },
-          {
-            id: "saia-confete",
-            name: "Confete Festa",
-            emoji: "🎉",
-            colors: ["#FDE68A", "#FBCFE8", "#BBF7D0"],
-            description: "Confetes coloridos para uma festa encantada",
-            image: "saia-confete.jpg"
+            description: "Listras delicadas em tons candy pastel",
+            image: "conjunto-doce-listra.jpeg",
+            sizes: ["4"]
           }
         ]
       },
       {
         id: "macacao",
-        name: "Macacão Fofura",
-        description: "Macacão prático e estiloso com botões frontais e bolsinhos laterais.",
-        price: "R$ 99,90",
-        sizes: "6 meses a 4 anos",
+        name: "Macacão",
+        description: "Macacão prático e estiloso. Peça única cheia de personalidade!",
+        price: "R$ 79,90",
         emoji: "🧸",
         thumb: "macacao-thumb.jpg",
         colors: ["#E0F2FE", "#BAE6FD", "#7DD3FC"],
         prints: [
           {
-            id: "macacao-nuvens",
-            name: "Nuvens de Algodão",
-            emoji: "☁️",
-            colors: ["#E0F2FE", "#BAE6FD", "#7DD3FC"],
-            description: "Nuvens fofas em um céu azul pastel com gotinhas",
-            image: "macacao-nuvens.jpg"
+            id: "m-zoo",
+            name: "Zoo",
+            emoji: "🦁",
+            colors: ["#FDE68A", "#FCD34D", "#FBBF24"],
+            description: "Estampa com animais do zoológico",
+            image: "macacao-zoo.jpeg",
+            sizes: ["6", "8", "10"]
           }
         ]
       }
     ];
 
-    // ===== STATE =====
     var selectedProductIndex = 0;
-
-    // ===== DOM REFS =====
     var productsGrid = document.getElementById("productsGrid");
     var printsGrid = document.getElementById("printsGrid");
     var selectedInfo = document.getElementById("selectedInfo");
@@ -924,28 +539,19 @@
     var modalSummary = document.getElementById("modalSummary");
     var whatsappLink = document.getElementById("whatsappLink");
 
-    // ===== RENDER PRODUCTS =====
     function renderProducts() {
       productsGrid.innerHTML = products.map(function(product, i) {
         var isSelected = i === selectedProductIndex;
         var gradient = "linear-gradient(135deg, " + product.colors[0] + ", " + product.colors[1] + ")";
         return '<button class="product-card' + (isSelected ? " selected" : "") + '" data-index="' + i + '" aria-label="Selecionar ' + product.name + '">' +
-          '<div class="product-check">' +
-            '<svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="#fff" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>' +
-          '</div>' +
-          '<div class="product-icon" style="background:' + gradient + ';">' +
-            '<img src="' + product.thumb + '" alt="' + product.name + '" onerror="this.style.display=\'none\';this.parentElement.innerHTML=\'<span style=font-size:2.2rem>' + product.emoji + '</span>\';" />' +
-          '</div>' +
+          '<div class="product-check"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="#fff" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></div>' +
+          '<div class="product-icon" style="background:' + gradient + ';"><img src="' + product.thumb + '" alt="' + product.name + '" onerror="this.style.display=\'none\';this.parentElement.innerHTML=\'<span style=font-size:2.2rem>' + product.emoji + '</span>\';" /></div>' +
           '<h4>' + product.name + '</h4>' +
           '<p class="desc">' + product.description + '</p>' +
           '<span class="product-price">' + product.price + '</span>' +
-          '<div class="product-prints-count">' +
-            '<span>🎨</span>' +
-            '<span>' + product.prints.length + (product.prints.length === 1 ? " estampa" : " estampas") + '</span>' +
-          '</div>' +
+          '<div class="product-prints-count"><span>🎨</span><span>' + product.prints.length + (product.prints.length === 1 ? " estampa" : " estampas") + '</span></div>' +
         '</button>';
       }).join("");
-
       productsGrid.querySelectorAll(".product-card").forEach(function(card) {
         card.addEventListener("click", function() {
           selectedProductIndex = parseInt(card.dataset.index);
@@ -955,20 +561,14 @@
       });
     }
 
-    // ===== RENDER PRINTS =====
     function renderPrints() {
       var product = products[selectedProductIndex];
       step2Title.innerHTML = 'Escolha a estampa <span>— ' + product.name + '</span>';
-
       var gradient = "linear-gradient(135deg, " + product.colors[0] + ", " + product.colors[1] + ")";
       selectedInfo.innerHTML =
         '<div class="selected-info-icon" style="background:' + gradient + ';width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;">' +
           '<img src="' + product.thumb + '" alt="' + product.name + '" style="width:40px;height:40px;border-radius:10px;object-fit:cover;" onerror="this.style.display=\'none\';this.parentElement.innerHTML=\'<span style=font-size:1.4rem>' + product.emoji + '</span>\';" />' +
-        '</div>' +
-        '<div>' +
-          '<strong>' + product.name + '</strong>' +
-          '<small>' + (product.prints.length === 1 ? "1 estampa disponível" : product.prints.length + " estampas disponíveis") + ' • Tamanhos: ' + product.sizes + '</small>' +
-        '</div>';
+        '</div><div><strong>' + product.name + '</strong><small>' + (product.prints.length === 1 ? "1 estampa disponível" : product.prints.length + " estampas disponíveis") + ' • ' + product.price + '</small></div>';
 
       var isSingle = product.prints.length === 1;
       printsGrid.innerHTML = '<div class="prints-grid' + (isSingle ? " single" : "") + '">' +
@@ -977,9 +577,13 @@
           var patternEmojis = "";
           for (var j = 0; j < 20; j++) patternEmojis += "<span>" + print.emoji + "</span>";
 
+          var sizeTags = print.sizes.map(function(s) {
+            return '<span class="print-size-tag">' + s + '</span>';
+          }).join("");
+
           return '<button class="print-card" data-print-id="' + print.id + '" aria-label="Selecionar ' + product.name + ' com estampa ' + print.name + '">' +
             '<div class="print-preview" style="background:' + printGradient + ';">' +
-              '<img src="' + print.image + '" alt="' + print.name + '" onerror="this.style.display=\'none\';" />' +
+              '<img src="' + print.image + '" alt="' + print.name + '" onload="this.parentElement.classList.add(\'has-image\');" onerror="this.style.display=\'none\';" />' +
               '<div class="print-pattern-overlay">' + patternEmojis + '</div>' +
               '<span class="print-emoji-center">' + print.emoji + '</span>' +
               '<div class="print-hover-label"><span>Eu quero! 💕</span></div>' +
@@ -987,6 +591,7 @@
             '<div class="print-info">' +
               '<h4>' + print.name + '</h4>' +
               '<p>' + print.description + '</p>' +
+              '<div class="print-sizes">' + sizeTags + '</div>' +
             '</div>' +
           '</button>';
         }).join("") + '</div>';
@@ -1000,30 +605,37 @@
       });
     }
 
-    // ===== MODAL =====
     function openModal(product, print) {
       var printGradient = "linear-gradient(135deg, " + print.colors[0] + ", " + print.colors[1] + ", " + (print.colors[2] || print.colors[1]) + ")";
-
       modalHeader.style.background = printGradient;
       modalHeader.innerHTML =
-        '<img src="' + print.image + '" alt="' + print.name + '" class="modal-header-img" onerror="this.style.display=\'none\';" />' +
-        '<span class="emoji">' + print.emoji + '</span>' +
-        '<span class="tag">' + product.emoji + ' ' + product.name + '</span>';
+        '<img src="' + print.image + '" alt="' + print.name + '" class="modal-header-img" ' +
+          'onerror="this.style.display=\'none\'; document.getElementById(\'modalFallback\').style.display=\'flex\';" />' +
+        '<div class="modal-header-fallback" id="modalFallback" style="display:none;">' +
+          '<span class="emoji">' + print.emoji + '</span>' +
+        '</div>' +
+        '<span class="modal-header-tag">' + product.emoji + ' ' + product.name + ' — ' + print.name + '</span>';
+
+      var sizesHtml = print.sizes.map(function(s) {
+        return '<span class="modal-size-tag">' + s + '</span>';
+      }).join("");
 
       modalSummary.innerHTML =
         '<div class="row"><span class="label">Peça</span><span class="value">' + product.name + '</span></div>' +
         '<div class="row"><span class="label">Estampa</span><span class="value">' + print.name + '</span></div>' +
-        '<div class="row"><span class="label">Tamanhos</span><span class="value">' + product.sizes + '</span></div>' +
+        '<div class="row"><span class="label">Tamanhos</span><span class="value"><div class="modal-sizes">' + sizesHtml + '</div></span></div>' +
         '<hr class="divider" />' +
         '<div class="row price"><span class="label">Valor</span><span class="value">' + product.price + '</span></div>';
 
+      var sizesText = print.sizes.join(", ");
       var message = encodeURIComponent(
-        "Olá, tenho interesse na " + product.name + " com a estampa " + print.name + ". Poderia me enviar mais informações? 😊"
+        "Olá! 😊 Tenho interesse na peça *" + product.name + "* com a estampa *" + print.name + "*.\nTamanhos disponíveis: " + sizesText + ".\nPoderia me enviar mais informações?"
       );
       whatsappLink.href = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + message;
 
       modal.classList.add("open");
       document.body.style.overflow = "hidden";
+      document.querySelector(".modal-box").scrollTop = 0;
     }
 
     function closeModal() {
@@ -1034,14 +646,10 @@
     modalBackdrop.addEventListener("click", closeModal);
     modalClose.addEventListener("click", closeModal);
     modalBack.addEventListener("click", closeModal);
-    document.addEventListener("keydown", function(e) {
-      if (e.key === "Escape") closeModal();
-    });
+    document.addEventListener("keydown", function(e) { if (e.key === "Escape") closeModal(); });
 
-    // ===== FOOTER YEAR =====
     document.getElementById("footerYear").textContent = new Date().getFullYear();
 
-    // ===== INIT =====
     renderProducts();
     renderPrints();
   </script>
